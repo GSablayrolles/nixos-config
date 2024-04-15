@@ -1,0 +1,1 @@
+# nixos-flakes-starter-config
