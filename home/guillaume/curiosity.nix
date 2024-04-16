@@ -44,4 +44,9 @@
     enableZshIntegration = true;
   };
 
+  # Browser
+  programs.brave = {
+    enable = true;
+  };
+
 }
