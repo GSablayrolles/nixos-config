@@ -21,12 +21,13 @@
       vscjava.vscode-gradle
       vscjava.vscode-java-debug
       oderwat.indent-rainbow
+      github.github-vscode-theme
       pkief.material-icon-theme
     ];
 
     # Theme and iconTheme
     userSettings.workbench.iconTheme = "material-icon-theme";
-    userSettings.workbench.colorTheme = "Solarized Light";
+    userSettings.workbench.colorTheme = "GitHub Dark";
   };
 
   programs.git = {
