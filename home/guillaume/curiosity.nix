@@ -23,6 +23,10 @@
       oderwat.indent-rainbow
       pkief.material-icon-theme
     ];
+
+    # Theme and iconTheme
+    userSettings.workbench.iconTheme = "material-icon-theme";
+    userSettings.workbench.colorTheme = "Solarized Light";
   };
 
   programs.git = {
