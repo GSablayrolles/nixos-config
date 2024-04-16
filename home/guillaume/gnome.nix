@@ -68,7 +68,6 @@ in {
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
         "batterytime@typeof.pw"
-        "gtktitlebar@velitasali.github.io"
       ];
     };
 
