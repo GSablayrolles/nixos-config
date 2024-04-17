@@ -58,7 +58,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Monokai Pro (Filter Machine)";
+    theme = "Everforest Dark Medium";
   };
 
 }
