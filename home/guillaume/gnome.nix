@@ -8,7 +8,7 @@
 in {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      color-scheme = "default";
+      color-scheme = "prefer-dark";
       enable-hot-corners = false;
       show-battery-percentage = true;
     };

@@ -7,6 +7,8 @@
 
   home.packages = with pkgs; [
     kitty # terminal
+    discord
+    pfetch
   ];
 
   programs.vscode = {
@@ -28,6 +30,10 @@
     # Theme and iconTheme
     userSettings.workbench.iconTheme = "material-icon-theme";
     userSettings.workbench.colorTheme = "GitHub Dark";
+
+    # Indentation
+    userSettings.editor.indentSize = 4;
+    userSettings.editor.tabSize = 4;
   };
 
   programs.git = {
@@ -48,6 +54,11 @@
   # Browser
   programs.brave = {
     enable = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Monokai Pro (Filter Machine)";
   };
 
 }
