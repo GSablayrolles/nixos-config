@@ -27,6 +27,7 @@ in {
       toggle-fullscreen = ["F11"];
       move-to-workspace-left = ["<Control><Super>Left"];
       move-to-workspace-right = ["<Control><Super>Right"];
+      close = ["<Super>q"];
     };
     "org/gnome/mutter/keybindings" = {
       "toggle-tiled-left" = [];

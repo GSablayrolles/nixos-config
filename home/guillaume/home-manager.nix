@@ -8,6 +8,7 @@
     homeDirectory = "/home/guillaume";
   };
 
+# org.gnome.desktop.interface gtk
   gtk = {
     enable = true;
 
