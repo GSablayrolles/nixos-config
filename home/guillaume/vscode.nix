@@ -1,56 +1,50 @@
 {pkgs, ...} : {
-  programs.vscode = {
-  enable = true;
-  package = pkgs.vscode-fhs;
-  enableExtensionUpdateCheck = false;
-  enableUpdateCheck = false;
-  extensions = with pkgs.vscode-extensions; [
-    mkhl.direnv
-    jnoortheen.nix-ide
-    redhat.java
-    vscjava.vscode-gradle
-    vscjava.vscode-java-debug
-    oderwat.indent-rainbow
-    github.github-vscode-theme
-    pkief.material-icon-theme
-  ]
-  ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    programs.vscode = {
+    enable = true;
+    package = pkgs.vscode-fhs;
+    enableExtensionUpdateCheck = false;
+    enableUpdateCheck = false;
+    extensions = with pkgs.vscode-extensions; [
+        mkhl.direnv
+        jnoortheen.nix-ide
+        redhat.java
+        vscjava.vscode-gradle
+        vscjava.vscode-java-debug
+        oderwat.indent-rainbow
+        github.github-vscode-theme
+        pkief.material-icon-theme
+    ]
+    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "Everforest";
-          publisher = "sainnhe";
-          version = "0.3.0";
-          sha256 = "nZirzVvM160ZTpBLTimL2X35sIGy5j2LQOok7a2Yc7U=";
+            name = "Everforest";
+            publisher = "sainnhe";
+            version = "0.3.0";
+            sha256 = "nZirzVvM160ZTpBLTimL2X35sIGy5j2LQOok7a2Yc7U=";
         }
-      ];
+        ];
 
 
-  # Shortcuts
-  keybindings= [
-    {
-      key = "ctrl+shift+x";
-      command = "workbench.action.terminal.toggleTerminal";
-    }
-  ];
+    # Shortcuts
+    keybindings= [
+        {
+        key = "ctrl+shift+x";
+        command = "workbench.action.terminal.toggleTerminal";
+        }
+    ];
 
     # Theme and iconTheme
-  userSettings.workbench.iconTheme = "material-icon-theme";
-  userSettings.workbench.colorTheme = "Everforest Dark";
+    userSettings.workbench.iconTheme = "material-icon-theme";
+    userSettings.workbench.colorTheme = "Everforest Dark";
 
-  # Indent
-  userSettings.editor.detectIndentation = false;
-  userSettings.editor.indent_style = "space";
-  userSettings.editor.indentSize = 4;
-  userSettings.editor.insertSpaces = true;
-  userSettings.editor.tabSize = 2;
+    # Indent
+    userSettings.editor.detectIndentation = false;
+    userSettings.editor.indent_style = "space";
+    userSettings.editor.indentSize = 4;
+    userSettings.editor.insertSpaces = true;
+    userSettings.editor.tabSize = 2;
 
-  # Everforest
-  userSettings.everforest.darkWorkbench = "high-contrast";
-
-    # Formatter
-    userSettings.nix.enableLanguageServer = true;
-    userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-    userSettings.nix.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
-    userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
-  };
+    # Everforest
+    userSettings.everforest.darkWorkbench = "high-contrast";
+    };
 
 }
