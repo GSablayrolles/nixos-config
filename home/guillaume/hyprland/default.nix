@@ -1,4 +1,9 @@
 {lib, config, pkgs, inputs, ...}: {
+    imports = [
+        ./binds.nix
+        ./window-bind.nix
+    ];
+
     wayland.windowManager.hyprland = {
         enable = true;
 
