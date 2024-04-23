@@ -1,1 +1,1 @@
-# nixos-flakes-starter-config
+# My Nixos-Gnome Config
