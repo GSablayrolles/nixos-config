@@ -4,6 +4,7 @@
     ./gnome.nix
     ./oh-my-zsh.nix
     ./vscode.nix
+    ./hyprland.nix
   ];
 
   home.packages = with pkgs; [

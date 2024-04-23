@@ -36,5 +36,8 @@
   environment.systemPackages = with pkgs; [vim];
   services.blueman.enable = true;
 
+  # Hyprland
+  programs.hyprland.enable = true;
+
   system.stateVersion = "23.05";
 }
