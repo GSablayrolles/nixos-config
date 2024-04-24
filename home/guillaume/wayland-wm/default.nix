@@ -7,8 +7,8 @@ in {
   imports = [
     #./swaync.nix
     ./waybar.nix
-    #./rofi.nix
-    #./cliphist.nix
+    ./rofi.nix
+    ./cliphist.nix
     #./hyprlock.nix
     #./hypridle.nix
   ];

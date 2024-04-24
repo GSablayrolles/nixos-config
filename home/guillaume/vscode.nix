@@ -21,6 +21,12 @@
                 version = "0.3.0";
                 sha256 = "nZirzVvM160ZTpBLTimL2X35sIGy5j2LQOok7a2Yc7U=";
             }
+            {
+                name = "vscode-color";
+                publisher = "anseki";
+                version = "0.4.5";
+                sha256 = "xclKrAqa/00xmlfqgIi0cPNyzDI6HFc+bz2kpm4d1AY=";
+            }
             ];
 
 
