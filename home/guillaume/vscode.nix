@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{pkgs, config, ...} : {
     programs.vscode = {
         enable = true;
         package = pkgs.vscode-fhs;
@@ -45,6 +45,11 @@
 
         # Everforest
         userSettings.everforest.darkWorkbench = "high-contrast";
+
+         # Font
+        userSettings.editor.fontLigatures = true;
+        userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
+
     };
 
 }

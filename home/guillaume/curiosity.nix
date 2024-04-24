@@ -5,6 +5,8 @@
     ./oh-my-zsh.nix
     ./vscode.nix
     ./hyprland
+    ./wayland-wm
+    ./options
   ];
 
   home.packages = with pkgs; [
@@ -40,4 +42,15 @@
     theme = "Everforest Dark Medium";
   };
 
+    fontProfiles = {
+    enable = true;
+    monospace = {
+      family = "FiraCode Nerd Font";
+      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+    };
+    regular = {
+      family = "Fira Sans";
+      package = pkgs.fira;
+    };
+  };
 }
