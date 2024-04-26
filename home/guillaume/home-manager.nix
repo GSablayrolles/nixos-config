@@ -1,8 +1,16 @@
 {
   config,
   pkgs,
+  nix-colors,
   ...
 }: {
+
+    imports = [
+        nix-colors.homeManagerModules.default
+    ];
+
+  colorScheme = nix-colors.colorSchemes.everforest;
+
   home = {
     username = "guillaume";
     homeDirectory = "/home/guillaume";

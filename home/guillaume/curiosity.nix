@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./home-manager.nix
+    ./kitty.nix
     ./gnome.nix
     ./oh-my-zsh.nix
     ./vscode.nix
@@ -37,10 +38,6 @@
     enable = true;
   };
 
-  programs.kitty = {
-    enable = true;
-    theme = "Everforest Dark Medium";
-  };
 
     fontProfiles = {
     enable = true;

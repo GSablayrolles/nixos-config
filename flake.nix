@@ -24,7 +24,7 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
+    home-manager,nix-colors,
     ...
   } @ inputs: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
@@ -43,7 +43,8 @@
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {
-          inherit (self) inputs outputs;
+          inherit (self) inputs outputs ;
+          inherit nix-colors;
         };
         modules =
          [

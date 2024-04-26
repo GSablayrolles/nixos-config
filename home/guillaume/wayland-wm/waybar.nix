@@ -49,22 +49,37 @@ in {
     });
     systemd.enable = true;
 
-    style = ''
+    style = let 
+    inherit (config.colorscheme) palette;
+    greenGruv = "83C092";
+    in ''
         * {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
           padding: 0 8px;
+          color: #${greenGruv};
+          background-color: #${palette.base00};
         }
+
+        #network {
+            color: #${palette.base05};
+        }
+
+        #battery {
+            color: #${palette.base0D};
+        }
+
     '';
 
     settings = {
       primary = {
         layer = "top";
-        height = 40;
+        height = 30;
         margin = "2";
         position = "top";
-        exclusive = true;
+        exclusive = false;
 
+        # Left bar modules
         modules-left =
           [
             "custom/currentplayer"
@@ -79,16 +94,16 @@ in {
             "hyprland/submap"
           ]);
 
-        # Center bar
+        # Center bar modules
         modules-center = [
           "cpu"
-         
           "memory"
           "clock"
           "pulseaudio"
           "custom/notifications"
         ];
 
+        # Right bar modules
         modules-right = [
           "network"
           "battery"
