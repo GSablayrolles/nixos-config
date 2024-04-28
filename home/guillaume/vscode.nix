@@ -13,6 +13,8 @@
             oderwat.indent-rainbow
             github.github-vscode-theme
             pkief.material-icon-theme
+            nvarner.typst-lsp
+            tomoki1207.pdf
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {

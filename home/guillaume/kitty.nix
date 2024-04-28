@@ -37,11 +37,11 @@ in {
       color3 = "#${palette.base0A}";
       color4 = "#${palette.base0D}";
       color5 = "#${palette.base0E}";
-      color6 = "#${palette.base0C}";
+      color6 = "#${palette.base0B}";
       color7 = "#${palette.base05}";
       color8 = "#${palette.base03}";
       color9 = "#${palette.base08}";
-      color10 = "#${palette.base0B}";
+      color10 = "#${palette.base0C}";
       color11 = "#${palette.base0A}";
       color12 = "#${palette.base0D}";
       color13 = "#${palette.base0E}";

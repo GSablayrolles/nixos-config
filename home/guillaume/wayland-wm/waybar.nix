@@ -57,8 +57,23 @@ in {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
           padding: 0 8px;
-          color: #${greenGruv};
-          background-color: #${palette.base00};
+          color: #${palette.base0F};
+        }
+
+        window#waybar.top {
+          padding: 0;
+          background-color: transparent;
+          border: 2px solid #${palette.base08};
+          border-radius: 10px;
+        }
+
+        .modules-center {
+            background-color: #${palette.base09};
+            border-radius: 10px;
+        }
+
+        .modules-right {
+            padding: 0;
         }
 
         #network {
@@ -67,6 +82,11 @@ in {
 
         #battery {
             color: #${palette.base0D};
+        }
+
+        #clock, #custom-hostname {
+            background-color: #${palette.base08};
+            border-radius: 10px;
         }
 
     '';
@@ -168,7 +188,7 @@ in {
           format = "{name} {windows}";
           "window-rewrite" = {
             "title<.*youtube.*>" = "";
-            "class<firefox>" = "";
+            "brave" = "";
             "class<firefox> title<.*github.*>" = "";
             "warp" = "";
             "kitty" = "";
