@@ -133,7 +133,7 @@ in {
         /*Pretty explicit*/
         #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications{
           background-color: #${palette.base00};
-          color: #${palette.base0C};
+          color: #${palette.base05};
           margin: 4px 3.5px;
           border-radius: 16px;
           padding: 0px 20px;
@@ -148,6 +148,15 @@ in {
             margin: 0 3.5px;
             color: #${palette.base06};
             font-size: 12pt;
+        }
+
+        #network {
+          color: #${palette.base0C};  
+        }
+
+        tooltip {
+            background-color: #${palette.base00};
+            border-radius: 10%;
         }
 
     '';
