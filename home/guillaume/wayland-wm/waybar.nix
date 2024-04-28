@@ -97,7 +97,7 @@ in {
         height = 30;
         margin = "2";
         position = "top";
-        exclusive = false;
+        exclusive = true;
 
         # Left bar modules
         modules-left =

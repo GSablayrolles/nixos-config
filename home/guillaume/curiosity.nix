@@ -15,6 +15,7 @@
     discord
     pfetch
     neofetch
+    pipes
   ];
 
 

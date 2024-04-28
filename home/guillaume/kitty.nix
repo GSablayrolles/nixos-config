@@ -17,6 +17,8 @@ in {
       scrollback_pager_history_size = 2048;
       window_padding_width = 15;
 
+      background_blur = 3;
+
       # theme
       foreground = "#${palette.base05}";
       background = "#${palette.base00}";
