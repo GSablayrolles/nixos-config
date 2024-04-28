@@ -16,6 +16,7 @@
             pkief.material-icon-theme
             nvarner.typst-lsp
             tomoki1207.pdf
+            catppuccin.catppuccin-vsc
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -43,7 +44,9 @@
 
         # Theme and iconTheme
         userSettings.workbench.iconTheme = "material-icon-theme";
-        userSettings.workbench.colorTheme = "GitHub Dark";
+        userSettings.workbench.colorTheme = "Catppuccin Frappé";
+
+        userSettings.catppuccin.accentColor = "green";
 
         # Indent
         userSettings.editor.detectIndentation = false;
