@@ -51,42 +51,73 @@ in {
 
     style = let 
     inherit (config.colorscheme) palette;
-    greenGruv = "83C092";
     in ''
         * {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
-          padding: 0 8px;
-          color: #${palette.base0F};
-        }
-
-        window#waybar.top {
           padding: 0;
-          background-color: transparent;
-          border: 2px solid #${palette.base08};
-          border-radius: 10px;
+          color: #${palette.base0F};
+          border: none;
+          border-radius: 0;
         }
 
-        .modules-center {
-            background-color: #${palette.base09};
-            border-radius: 10px;
+        window#waybar {
+          padding: 0;
+          background-color: #${palette.base03};
         }
 
-        .modules-right {
-            padding: 0;
+        #custom-currentplayer {
+          background-color: #${palette.base00};
+          color: #${palette.base0D};
+          border-radius: 0px 20px 20px 0px;
+          padding: 0px 8px 0px 12px;
+          margin: 0px;
+          font-size: 22px;
         }
 
-        #network {
-            color: #${palette.base05};
+        #workspaces {
+          background-color: #${palette.base00};
+          color: #${palette.base02};
+          margin: 2px;
+          padding: 3px 2px;
+          border-radius: 16px;
         }
 
-        #battery {
-            color: #${palette.base0D};
+        #workspaces button {
+          background-color: #${palette.base01};
+          color: #${palette.base04};
+          padding: 0px 10px;
+          margin: 0px 4px;
+          border-radius: 16px;
+          min-width: 20px;
+          transition: all 0.2s ease-in-out;
         }
 
-        #clock, #custom-hostname {
-            background-color: #${palette.base08};
-            border-radius: 10px;
+        #workspaces button.active {
+          background-color: #${palette.base0D};
+          color: #${palette.base02};
+          border-radius: 16px;
+          min-width: 35px;
+          background-size: 400% 400%;
+          transition: all 0.2s ease-in-out;
+        }
+
+        #workspaces button:hover {
+          background-color: #${palette.base04};
+          color: #${palette.base02};
+          border-radius: 16px;
+          min-width: 35px;
+          background-size: 400% 400%;
+        }
+
+        #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications, #custom-hostname {
+          background-color: #${palette.base00};
+          color: #${palette.base06};
+          margin: 4px 0px;
+          margin-left: 7px;
+          border-radius: 16px;
+          padding: 0px 20px;
+          font-weight: bold;
         }
 
     '';
@@ -95,7 +126,7 @@ in {
       primary = {
         layer = "top";
         height = 30;
-        margin = "2";
+        margin = "0";
         position = "top";
         exclusive = true;
 
@@ -137,15 +168,18 @@ in {
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
+
         cpu = {
           format = "   {usage}%";
           on-click = btm-kitty;
         };
+
         memory = {
           format = "󰍛  {}%";
           on-click = btm-kitty;
           interval = 5;
         };
+        
         pulseaudio = {
           format = "{icon}  {volume}%";
           format-muted = "   0%";
@@ -201,6 +235,7 @@ in {
             "LM Studio" = "";
           };
         };
+
         battery = {
           bat = "BAT0";
           interval = 10;
@@ -209,9 +244,11 @@ in {
           format-charging = "󰂄 {capacity}%";
           onclick = "";
         };
+
         "sway/window" = {
           max-length = 20;
         };
+        
         network = {
           interval = 3;
           format-wifi = "   {essid}";
@@ -253,7 +290,7 @@ in {
             "spotify" = " 󰓇";
             "ncspot" = " 󰓇";
             "qutebrowser" = "󰖟";
-            "firefox" = " ";
+            "brave" = " ";
             "discord" = " 󰙯 ";
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
