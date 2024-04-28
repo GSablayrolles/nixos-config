@@ -4,6 +4,7 @@
         package = pkgs.vscode-fhs;
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
+        
         extensions = with pkgs.vscode-extensions; [
             mkhl.direnv
             jnoortheen.nix-ide
@@ -21,7 +22,7 @@
                 name = "Everforest";
                 publisher = "sainnhe";
                 version = "0.3.0";
-                sha256 = "nZirzVvM160ZTpBLTimL2X35sIGy5j2LQOok7a2Yc7U=";
+                sha256 = "sha256-nZirzVvM160ZTpBLTimL2X35sIGy5j2LQOok7a2Yc7U=";
             }
             {
                 name = "vscode-color";
@@ -42,7 +43,7 @@
 
         # Theme and iconTheme
         userSettings.workbench.iconTheme = "material-icon-theme";
-        userSettings.workbench.colorTheme = "Everforest Dark";
+        userSettings.workbench.colorTheme = "GitHub Dark";
 
         # Indent
         userSettings.editor.detectIndentation = false;
@@ -51,10 +52,10 @@
         userSettings.editor.insertSpaces = true;
         userSettings.editor.tabSize = 2;
 
-        # Everforest
-        userSettings.everforest.darkWorkbench = "high-contrast";
+        #Everforest
+        #userSettings.everforest.darkWorkbench = "high-contrast";
 
-         # Font
+        # Font
         userSettings.editor.fontLigatures = true;
         userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
 

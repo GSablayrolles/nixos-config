@@ -9,7 +9,7 @@
         nix-colors.homeManagerModules.default
     ];
 
-  colorScheme = nix-colors.colorSchemes.everforest;
+  colorScheme = nix-colors.colorSchemes.catppuccin-frappe;
 
   home = {
     username = "guillaume";
