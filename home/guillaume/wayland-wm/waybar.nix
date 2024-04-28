@@ -159,6 +159,27 @@ in {
             border-radius: 10%;
         }
 
+
+        #custom-power {
+          background-color: #${palette.base00};
+          color: #${palette.base0D};
+          border-radius: 20px 0px 0px 20px;
+          padding: 0px 8px 0px 8px;
+          margin: 0px;
+          margin-left: 3.5px;
+          font-weight: bold;
+          font-size: 12pt;
+        }
+
+    
+
+
+        #custom-quit, #custom-lock, #custom-reboot {
+            color: #${palette.base0E};
+            margin: 0 3px;
+        }
+
+
     '';
 
     settings = {
@@ -198,7 +219,8 @@ in {
           "network"
           "battery"
           "tray"
-          "custom/hostname"
+          #"custom/hostname"
+          "group/group-power"
         ];
 
         clock = {
@@ -351,6 +373,45 @@ in {
           };
           on-click = "${playerctl} play-pause";
         };
+
+        "group/group-power" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/power"
+            "custom/quit"
+            "custom/lock"
+            "custom/reboot"
+          ];
+        };
+
+        "custom/quit" = {
+          format = "󰗼";
+          on-click = "${pkgs.hyprland}/bin/hyprctl dispatch exit";
+          tooltip = false;
+        };
+
+        "custom/lock" = {
+          format = "󰍁";
+          on-click = "${lib.getExe pkgs.hyprlock}";
+          tooltip = false;
+        };
+
+        "custom/reboot" = {
+          format = "󰜉";
+          on-click = "${pkgs.systemd}/bin/systemctl reboot";
+          tooltip = false;
+        };
+
+        "custom/power" = {
+          format = "";
+          on-click = "${pkgs.systemd}/bin/systemctl poweroff";
+          tooltip = false;
+        };
+
       };
     };
   };
