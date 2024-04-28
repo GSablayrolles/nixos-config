@@ -52,6 +52,7 @@ in {
     style = let 
     inherit (config.colorscheme) palette;
     in ''
+        /*Every elements*/
         * {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
@@ -60,32 +61,49 @@ in {
           border: none;
           border-radius: 0;
         }
-
+        
+        /*Every waybar*/
         window#waybar {
           padding: 0;
           background-color: #${palette.base03};
         }
 
+        /*Current music player(left side)*/
         #custom-currentplayer {
           background-color: #${palette.base00};
           color: #${palette.base0D};
           border-radius: 0px 20px 20px 0px;
-          padding: 0px 8px 0px 12px;
+          padding: 0px 8px 0px 10px;
           margin: 0px;
-          font-size: 22px;
+          margin-right: 3.5px;
+          font-size: 18px;
         }
 
+        /*Current hostname (right side)*/
+        #custom-hostname {
+          background-color: #${palette.base00};
+          color: #${palette.base0D};
+          border-radius: 20px 0px 0px 20px;
+          padding: 0px 8px 0px 8px;
+          margin: 0px;
+          margin-left: 3.5px;
+          font-weight: bold;
+        }
+
+        /*Number and icons for workspaces*/
         #workspaces {
           background-color: #${palette.base00};
-          color: #${palette.base02};
+          color: #${palette.base0F};
           margin: 2px;
           padding: 3px 2px;
           border-radius: 16px;
+          font-weight: bold;
         }
 
+        /*Button around workspace*/
         #workspaces button {
           background-color: #${palette.base01};
-          color: #${palette.base04};
+          color: #${palette.base03};
           padding: 0px 10px;
           margin: 0px 4px;
           border-radius: 16px;
@@ -93,6 +111,7 @@ in {
           transition: all 0.2s ease-in-out;
         }
 
+        /*Current workspace*/
         #workspaces button.active {
           background-color: #${palette.base0D};
           color: #${palette.base02};
@@ -102,6 +121,7 @@ in {
           transition: all 0.2s ease-in-out;
         }
 
+        /*Mooving over a workspace*/
         #workspaces button:hover {
           background-color: #${palette.base04};
           color: #${palette.base02};
@@ -110,14 +130,24 @@ in {
           background-size: 400% 400%;
         }
 
-        #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications, #custom-hostname {
+        /*Pretty explicit*/
+        #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications{
           background-color: #${palette.base00};
-          color: #${palette.base06};
-          margin: 4px 0px;
-          margin-left: 7px;
+          color: #${palette.base0C};
+          margin: 4px 3.5px;
           border-radius: 16px;
           padding: 0px 20px;
           font-weight: bold;
+        }
+
+        #battery {
+            color: #${palette.base0B};
+        }
+
+        #clock {
+            margin: 0 3.5px;
+            color: #${palette.base06};
+            font-size: 12pt;
         }
 
     '';
@@ -263,7 +293,7 @@ in {
         };
 
         "custom/hostname" = {
-          exec = "echo $USER@$HOSTNAME";
+          exec = "echo @$HOSTNAME";
         };
 
         "custom/currentplayer" = {
