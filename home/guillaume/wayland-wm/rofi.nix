@@ -62,10 +62,10 @@ in {
       inherit (config.colorscheme) palette;
     in {
       "*" = {
-        bg0 = mkLiteral "#2b3339";
-        bg1 = mkLiteral "#323c41";
-        fg0 = mkLiteral "#d3c6aa";
-        fg1 = mkLiteral "#9da9a0";
+        bg0 = mkLiteral "#${palette.base00}";
+        bg1 = mkLiteral "#${palette.base01}";
+        fg0 = mkLiteral "#${palette.base03}";
+        fg1 = mkLiteral "#${palette.base04}";
 
         background-color = mkLiteral "transparent";
         text-color = mkLiteral "@fg0";
