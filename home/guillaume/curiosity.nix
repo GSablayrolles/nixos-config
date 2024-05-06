@@ -1,12 +1,9 @@
 {pkgs, ...}: {
   imports = [
+    ./desktop
     ./home-manager.nix
-    ./kitty.nix
-    ./gnome.nix
-    ./oh-my-zsh.nix
-    ./vscode.nix
-    ./hyprland
-    ./wayland-wm
+    ./dev
+    ./terminal
     ./options
   ];
 
