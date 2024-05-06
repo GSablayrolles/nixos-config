@@ -171,12 +171,12 @@ in {
           font-size: 12pt;
         }
 
-    
-
 
         #custom-quit, #custom-lock, #custom-reboot {
             color: #${palette.base0E};
-            margin: 0 3px;
+            padding: 0 3px;
+            background-color: #${palette.base00};
+            font-size: 12pt;
         }
 
 
@@ -378,7 +378,7 @@ in {
           orientation = "inherit";
           drawer = {
             transition-duration = 500;
-            transition-left-to-right = false;
+            transition-left-to-right = true;
           };
           modules = [
             "custom/power"
