@@ -57,7 +57,6 @@ in {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
           padding: 0;
-          color: #${palette.base0F};
           border: none;
           border-radius: 0;
         }
@@ -65,7 +64,8 @@ in {
         /*Every waybar*/
         window#waybar {
           padding: 0;
-          background-color: #${palette.base03};
+          /*background: content-box radial-gradient(#${palette.base05}, #${palette.base03});*/
+          background: #${palette.base03};
         }
 
         /*Current music player(left side)*/
@@ -93,7 +93,7 @@ in {
         /*Number and icons for workspaces*/
         #workspaces {
           background-color: #${palette.base00};
-          color: #${palette.base0F};
+          color: #${palette.base06};
           margin: 2px;
           padding: 3px 2px;
           border-radius: 16px;
