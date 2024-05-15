@@ -103,7 +103,7 @@ in {
         /*Button around workspace*/
         #workspaces button {
           background-color: #${palette.base01};
-          color: #${palette.base03};
+          color: #${palette.base0F};
           padding: 0px 10px;
           margin: 0px 4px;
           border-radius: 16px;
@@ -114,7 +114,7 @@ in {
         /*Current workspace*/
         #workspaces button.active {
           background-color: #${palette.base0D};
-          color: #${palette.base02};
+          color: #${palette.base08};
           border-radius: 16px;
           min-width: 35px;
           background-size: 400% 400%;
@@ -124,7 +124,7 @@ in {
         /*Mooving over a workspace*/
         #workspaces button:hover {
           background-color: #${palette.base04};
-          color: #${palette.base02};
+          color: #${palette.base0F};
           border-radius: 16px;
           min-width: 35px;
           background-size: 400% 400%;
