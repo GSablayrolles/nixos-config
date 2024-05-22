@@ -17,6 +17,9 @@
             nvarner.typst-lsp
             tomoki1207.pdf
             catppuccin.catppuccin-vsc
+            llvm-vs-code-extensions.vscode-clangd
+            rust-lang.rust-analyzer
+            vadimcn.vscode-lldb
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -30,6 +33,12 @@
                 publisher = "anseki";
                 version = "0.4.5";
                 sha256 = "xclKrAqa/00xmlfqgIi0cPNyzDI6HFc+bz2kpm4d1AY=";
+            }
+            {
+                name = "language-matlab";
+                publisher = "mathworks";
+                version = "1.2.2";
+                sha256 = "KR4BtLupplhTBPIvdg4cj0lbkTJROQ6tavOP4wdu8rA=";
             }
             ];
 
