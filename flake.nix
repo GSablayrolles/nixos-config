@@ -55,10 +55,12 @@
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
     nixosConfigurations = {
       curiosity = mkNixos "curiosity" "x86_64-linux";
+      atlantis = mkNixos "atlantis" "x86_64-linux";
     };
 
     homeConfigurations = {
       "guillaume@curiosity" = mkHome "curiosity" "x86_64-linux";
+      "guillaume@atlantis" = mkHome "atlantis" "x86_64-linux";
     };
   };
 }
