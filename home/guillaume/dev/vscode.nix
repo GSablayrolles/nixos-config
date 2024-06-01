@@ -51,6 +51,8 @@
             }
         ];
 
+        userSettings.editor.formatOnSave = true;
+
         # Theme and iconTheme
         userSettings.workbench.iconTheme = "material-icon-theme";
         userSettings.workbench.colorTheme = "Catppuccin Frappé";
@@ -70,6 +72,11 @@
         # Font
         userSettings.editor.fontLigatures = true;
         userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
+
+        # Git
+        userSettings.git.autofetch = true;
+        userSettings.git.confirmSync = false;
+
 
     };
 
