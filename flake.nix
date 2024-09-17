@@ -47,7 +47,7 @@
           inherit nix-colors;
         };
         modules =
-         [
+        [
           ./home/guillaume/${host}.nix
         ];
       };
