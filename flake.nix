@@ -20,38 +20,45 @@
   }: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
-
-    mkNixos = host: system:
+    mkNixos = user: host: system:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit (self) inputs outputs;};
-        modules = [
-          ./hosts/${host}
-        ];
-      };
-
-    mkHome = host: system:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit (self) inputs outputs ;
-          inherit nix-colors;
-        };
+        specialArgs = {inherit (self) inputs outputs nix-colors;};
         modules =
+          # let
+          #  overlay-master = final: prev: {
+          #    master = import nixpkgs-master {
+          #      system = final.system;
+          #      config.allowUnfree = true;
+          #    };
+          #  };
+          # in
           [
-          ./home/guillaume/${host}.nix
+            ./hosts/${host}
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.${user} = import ./home/${user}/${host}.nix;
+              home-manager.extraSpecialArgs = {
+                inherit (self) inputs outputs;
+                inherit nix-colors;
+              };
+            }
+            # stylix.nixosModules.stylix
+            # ({
+            #   config,
+            #   pkgs,
+            #   stylix,
+            #   ...
+            # }: {nixpkgs.overlays = [overlay-master];})
           ];
       };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
-    nixosConfigurations = {
-      curiosity = mkNixos "curiosity" "x86_64-linux";
-      atlantis = mkNixos "atlantis" "x86_64-linux";
-    };
 
-    homeConfigurations = {
-      "guillaume@curiosity" = mkHome "curiosity" "x86_64-linux";
-      "guillaume@atlantis" = mkHome "atlantis" "x86_64-linux";
+    nixosConfigurations = {
+      curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";
+      atlantis = mkNixos "guillaume" "atlantis" "x86_64-linux";
     };
   };
 }
