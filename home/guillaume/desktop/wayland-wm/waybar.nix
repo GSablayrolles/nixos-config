@@ -42,6 +42,7 @@
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
 in {
+  stylix.targets.waybar.enable = false;
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
@@ -49,136 +50,131 @@ in {
     });
     systemd.enable = true;
 
-    style = let 
-    inherit (config.colorscheme) palette;
-    in ''
-        /*Every elements*/
-        * {
-          font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
-          font-size: 10pt;
-          padding: 0;
-          border: none;
-          border-radius: 0;
-        }
-        
-        /*Every waybar*/
-        window#waybar {
-          padding: 0;
-          /*background: content-box radial-gradient(#${palette.base05}, #${palette.base03});*/
-          background: #${palette.base03};
-        }
+    style = with config.lib.stylix; ''
+      /*Every elements*/
+      * {
+        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
+        font-size: 10pt;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+      }
 
-        /*Current music player(left side)*/
-        #custom-currentplayer {
-          background-color: #${palette.base00};
-          color: #${palette.base0D};
-          border-radius: 0px 20px 20px 0px;
-          padding: 0px 8px 0px 10px;
-          margin: 0px;
-          margin-right: 3.5px;
-          font-size: 18px;
-        }
+      /*Every waybar*/
+      window#waybar {
+        padding: 0;
+        /*background: content-box radial-gradient(#${colors.base05}, #${colors.base03});*/
+        background: #${colors.base03};
+      }
 
-        /*Current hostname (right side)*/
-        #custom-hostname {
-          background-color: #${palette.base00};
-          color: #${palette.base0D};
-          border-radius: 20px 0px 0px 20px;
-          padding: 0px 8px 0px 8px;
-          margin: 0px;
-          margin-left: 3.5px;
-          font-weight: bold;
-        }
+      /*Current music player(left side)*/
+      #custom-currentplayer {
+        background-color: #${colors.base00};
+        color: #${colors.base0D};
+        border-radius: 0px 20px 20px 0px;
+        padding: 0px 8px 0px 10px;
+        margin: 0px;
+        margin-right: 3.5px;
+        font-size: 18px;
+      }
 
-        /*Number and icons for workspaces*/
-        #workspaces {
-          background-color: #${palette.base00};
-          color: #${palette.base06};
-          margin: 2px;
-          padding: 3px 2px;
-          border-radius: 16px;
-          font-weight: bold;
-        }
+      /*Current hostname (right side)*/
+      #custom-hostname {
+        background-color: #${colors.base00};
+        color: #${colors.base0D};
+        border-radius: 20px 0px 0px 20px;
+        padding: 0px 8px 0px 8px;
+        margin: 0px;
+        margin-left: 3.5px;
+        font-weight: bold;
+      }
 
-        /*Button around workspace*/
-        #workspaces button {
-          background-color: #${palette.base01};
-          color: #${palette.base0F};
-          padding: 0px 10px;
-          margin: 0px 4px;
-          border-radius: 16px;
-          min-width: 20px;
-          transition: all 0.2s ease-in-out;
-        }
+      /*Number and icons for workspaces*/
+      #workspaces {
+        background-color: #${colors.base00};
+        color: #${colors.base06};
+        margin: 2px;
+        padding: 3px 2px;
+        border-radius: 16px;
+        font-weight: bold;
+      }
 
-        /*Current workspace*/
-        #workspaces button.active {
-          background-color: #${palette.base0D};
-          color: #${palette.base08};
-          border-radius: 16px;
-          min-width: 35px;
-          background-size: 400% 400%;
-          transition: all 0.2s ease-in-out;
-        }
+      /*Button around workspace*/
+      #workspaces button {
+        background-color: #${colors.base01};
+        color: #${colors.base0F};
+        padding: 0px 10px;
+        margin: 0px 4px;
+        border-radius: 16px;
+        min-width: 20px;
+        transition: all 0.2s ease-in-out;
+      }
 
-        /*Mooving over a workspace*/
-        #workspaces button:hover {
-          background-color: #${palette.base04};
-          color: #${palette.base0F};
-          border-radius: 16px;
-          min-width: 35px;
-          background-size: 400% 400%;
-        }
+      /*Current workspace*/
+      #workspaces button.active {
+        background-color: #${colors.base0D};
+        color: #${colors.base08};
+        border-radius: 16px;
+        min-width: 35px;
+        background-size: 400% 400%;
+        transition: all 0.2s ease-in-out;
+      }
 
-        /*Pretty explicit*/
-        #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications{
-          background-color: #${palette.base00};
-          color: #${palette.base05};
-          margin: 4px 3.5px;
-          border-radius: 16px;
-          padding: 0px 20px;
-          font-weight: bold;
-        }
+      /*Mooving over a workspace*/
+      #workspaces button:hover {
+        background-color: #${colors.base04};
+        color: #${colors.base0F};
+        border-radius: 16px;
+        min-width: 35px;
+        background-size: 400% 400%;
+      }
 
-        #battery {
-            color: #${palette.base0B};
-        }
+      /*Pretty explicit*/
+      #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications{
+        background-color: #${colors.base00};
+        color: #${colors.base05};
+        margin: 4px 3.5px;
+        border-radius: 16px;
+        padding: 0px 20px;
+        font-weight: bold;
+      }
 
-        #clock {
-            margin: 0 3.5px;
-            color: #${palette.base06};
-            font-size: 12pt;
-        }
+      #battery {
+          color: #${colors.base0B};
+      }
 
-        #network {
-          color: #${palette.base0C};  
-        }
-
-        tooltip {
-            background-color: #${palette.base00};
-            border-radius: 10%;
-        }
-
-
-        #custom-power {
-          background-color: #${palette.base00};
-          color: #${palette.base0D};
-          border-radius: 20px 0px 0px 20px;
-          padding: 0px 8px 0px 8px;
-          margin: 0px;
-          margin-left: 3.5px;
-          font-weight: bold;
+      #clock {
+          margin: 0 3.5px;
+          color: #${colors.base06};
           font-size: 12pt;
-        }
+      }
 
+      #network {
+        color: #${colors.base0C};
+      }
 
-        #custom-quit, #custom-lock, #custom-reboot {
-            color: #${palette.base0E};
-            padding: 0 3px;
-            background-color: #${palette.base00};
-            font-size: 12pt;
-        }
+      tooltip {
+          background-color: #${colors.base00};
+          border-radius: 10%;
+      }
 
+      #custom-power {
+        background-color: #${colors.base00};
+        color: #${colors.base0D};
+        border-radius: 20px 0px 0px 20px;
+        padding: 0px 8px 0px 8px;
+        margin: 0px;
+        margin-left: 3.5px;
+        font-weight: bold;
+        font-size: 12pt;
+      }
+
+      #custom-quit, #custom-lock, #custom-reboot {
+          color: #${colors.base0E};
+          padding: 0 3px;
+          background-color: #${colors.base00};
+          font-size: 12pt;
+      }
 
     '';
 
@@ -240,7 +236,7 @@ in {
           on-click = btm-kitty;
           interval = 5;
         };
-        
+
         pulseaudio = {
           format = "{icon}  {volume}%";
           format-muted = "   0%";
@@ -309,7 +305,7 @@ in {
         "sway/window" = {
           max-length = 20;
         };
-        
+
         network = {
           interval = 3;
           format-wifi = "   {essid}";
@@ -411,7 +407,6 @@ in {
           on-click = "${pkgs.systemd}/bin/systemctl poweroff";
           tooltip = false;
         };
-
       };
     };
   };
