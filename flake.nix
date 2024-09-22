@@ -24,7 +24,8 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,nix-colors,
+    home-manager,
+    nix-colors,
     ...
   } @ inputs: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
