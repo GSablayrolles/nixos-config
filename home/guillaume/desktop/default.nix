@@ -1,7 +1,7 @@
-{...} : {
-    imports = [
-        ./gnome.nix
-        ./hyprland
-        ./wayland-wm
-    ];
+{...}: {
+  imports = [
+    # ./gnome.nix
+    ./hyprland
+    ./wayland-wm
+  ];
 }

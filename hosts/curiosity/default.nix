@@ -9,7 +9,7 @@
     ./config.nix
     ./locale.nix
     ./nix.nix
-    ./gnome.nix
+    # ./gnome.nix
     ./users/guillaume
   ];
   networking.hostName = "curiosity";
@@ -25,12 +25,6 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-
-  };
 
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfreePredicate = pkg:
