@@ -17,10 +17,7 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      desktopManager.gnome = {
-        enable = true;
-      };
-      displayManager.gdm = {
+      displayManager.sddm = {
         enable = true;
       };
     };
@@ -61,18 +58,18 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  ### XDG Portals
-  #xdg = {
-  #  portal = {
-  #    enable = true;
-  #    extraPortals = with pkgs; [
-  #      xdg-desktop-portal
-  #      xdg-desktop-portal-gtk
-  #    ];
-  #  };
-  #};
+  ## XDG Portals
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
+    };
+  };
 
-  #environment.systemPackages = [
-  #  pkgs.xdg-utils # xdg-open
-  #];
+  environment.systemPackages = [
+    pkgs.xdg-utils # xdg-open
+  ];
 }
