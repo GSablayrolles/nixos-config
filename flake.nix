@@ -7,16 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    hyprland = {
-        url = "github:hyprwm/Hyprland";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
-    
-    hyprland-plugins = {
-        url = "github:hyprwm/hyprland-plugins";
-        inputs.hyprland.follows = "hyprland";
-    };
 
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -27,7 +17,7 @@
     home-manager,
     nix-colors,
     ...
-  } @ inputs: let
+  }: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
@@ -48,9 +38,9 @@
           inherit nix-colors;
         };
         modules =
-        [
+          [
           ./home/guillaume/${host}.nix
-        ];
+          ];
       };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
