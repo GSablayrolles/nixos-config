@@ -14,12 +14,12 @@
   ];
   networking.hostName = "curiosity";
   services = {
+    displayManager.sddm = {
+      enable = true;
+    };
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      displayManager.sddm = {
-        enable = true;
-      };
     };
   };
 
