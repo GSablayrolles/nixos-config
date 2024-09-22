@@ -9,7 +9,7 @@
     ./config.nix
     ./locale.nix
     ./nix.nix
-    # ./gnome.nix
+    ./stylix.nix
     ./users/guillaume
   ];
   networking.hostName = "curiosity";

@@ -8,14 +8,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    nix-colors,
+    stylix,
     ...
   }: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
@@ -23,35 +26,19 @@
     mkNixos = user: host: system:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit (self) inputs outputs nix-colors;};
-        modules =
-          # let
-          #  overlay-master = final: prev: {
-          #    master = import nixpkgs-master {
-          #      system = final.system;
-          #      config.allowUnfree = true;
-          #    };
-          #  };
-          # in
-          [
-            ./hosts/${host}
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.users.${user} = import ./home/${user}/${host}.nix;
-              home-manager.extraSpecialArgs = {
-                inherit (self) inputs outputs;
-                inherit nix-colors;
-              };
-            }
-            # stylix.nixosModules.stylix
-            # ({
-            #   config,
-            #   pkgs,
-            #   stylix,
-            #   ...
-            # }: {nixpkgs.overlays = [overlay-master];})
-          ];
+        specialArgs = {inherit (self) inputs outputs;};
+        modules = [
+          ./hosts/${host}
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.${user} = import ./home/${user}/${host}.nix;
+            home-manager.extraSpecialArgs = {
+              inherit (self) inputs outputs;
+            };
+          }
+          stylix.nixosModules.stylix
+        ];
       };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
