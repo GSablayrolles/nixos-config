@@ -53,7 +53,6 @@ in {
     style = with config.lib.stylix; ''
       /*Every elements*/
       * {
-        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
         font-size: 10pt;
         padding: 0;
         border: none;
