@@ -5,22 +5,19 @@
   pkgs,
   ...
 }: let
-  inherit (lib);
+  
 
   # Dependencies
-  cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
-  grep = "${pkgs.gnugrep}/bin/grep";
   wc = "${pkgs.coreutils}/bin/wc";
   jq = "${pkgs.jq}/bin/jq";
-  rofi = "${pkgs.rofi}/bin/rofi";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
-  #nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
+  nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -43,179 +40,40 @@
   ''}/bin/waybar-${name}";
 in {
   stylix.targets.waybar.enable = false;
+
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oa: {
-      mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
-    });
     systemd.enable = true;
-
-    style = with config.lib.stylix; ''
-      /*Every elements*/
-      * {
-        font-size: 10pt;
-        padding: 0;
-        border: none;
-        border-radius: 0;
-      }
-
-      /*Every waybar*/
-      window#waybar {
-        padding: 0;
-        /*background: content-box radial-gradient(#${colors.base05}, #${colors.base03});*/
-        background: #${colors.base03};
-      }
-
-      /*Current music player(left side)*/
-      #custom-currentplayer {
-        background-color: #${colors.base00};
-        color: #${colors.base0D};
-        border-radius: 0px 20px 20px 0px;
-        padding: 0px 8px 0px 10px;
-        margin: 0px;
-        margin-right: 3.5px;
-        font-size: 18px;
-      }
-
-      /*Current hostname (right side)*/
-      #custom-hostname {
-        background-color: #${colors.base00};
-        color: #${colors.base0D};
-        border-radius: 20px 0px 0px 20px;
-        padding: 0px 8px 0px 8px;
-        margin: 0px;
-        margin-left: 3.5px;
-        font-weight: bold;
-      }
-
-      /*Number and icons for workspaces*/
-      #workspaces {
-        background-color: #${colors.base00};
-        color: #${colors.base06};
-        margin: 2px;
-        padding: 3px 2px;
-        border-radius: 16px;
-        font-weight: bold;
-      }
-
-      /*Button around workspace*/
-      #workspaces button {
-        background-color: #${colors.base01};
-        color: #${colors.base0F};
-        padding: 0px 10px;
-        margin: 0px 4px;
-        border-radius: 16px;
-        min-width: 20px;
-        transition: all 0.2s ease-in-out;
-      }
-
-      /*Current workspace*/
-      #workspaces button.active {
-        background-color: #${colors.base0D};
-        color: #${colors.base08};
-        border-radius: 16px;
-        min-width: 35px;
-        background-size: 400% 400%;
-        transition: all 0.2s ease-in-out;
-      }
-
-      /*Mooving over a workspace*/
-      #workspaces button:hover {
-        background-color: #${colors.base04};
-        color: #${colors.base0F};
-        border-radius: 16px;
-        min-width: 35px;
-        background-size: 400% 400%;
-      }
-
-      /*Pretty explicit*/
-      #cpu, #memory, #tray, #pulseaudio, #network, #battery, #clock, #custom-notifications{
-        background-color: #${colors.base00};
-        color: #${colors.base05};
-        margin: 4px 3.5px;
-        border-radius: 16px;
-        padding: 0px 20px;
-        font-weight: bold;
-      }
-
-      #battery {
-          color: #${colors.base0B};
-      }
-
-      #clock {
-          margin: 0 3.5px;
-          color: #${colors.base06};
-          font-size: 12pt;
-      }
-
-      #network {
-        color: #${colors.base0C};
-      }
-
-      tooltip {
-          background-color: #${colors.base00};
-          border-radius: 10%;
-      }
-
-      #custom-power {
-        background-color: #${colors.base00};
-        color: #${colors.base0D};
-        border-radius: 20px 0px 0px 20px;
-        padding: 0px 8px 0px 8px;
-        margin: 0px;
-        margin-left: 3.5px;
-        font-weight: bold;
-        font-size: 12pt;
-      }
-
-      #custom-quit, #custom-lock, #custom-reboot {
-          color: #${colors.base0E};
-          padding: 0 3px;
-          background-color: #${colors.base00};
-          font-size: 12pt;
-      }
-
-    '';
-
     settings = {
       primary = {
         layer = "top";
-        height = 30;
-        margin = "0";
-        position = "top";
-        exclusive = true;
-
-        # Left bar modules
+        position = "bottom";
+        exclusive = false;
+        fixed-center = false;
         modules-left =
-          [
-            "custom/currentplayer"
-            "custom/player"
-          ]
-          ++ (lib.optionals config.wayland.windowManager.sway.enable [
-            "sway/workspaces"
-            "sway/mode"
-          ])
-          ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
+          lib.optionals
+          config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
-            "hyprland/submap"
-          ]);
-
-        # Center bar modules
+            #"hyprland/submap"
+          ]
+          ++ [
+            "cpu"
+            "memory"
+          ];
         modules-center = [
-          "cpu"
-          "memory"
-          "clock"
-          "pulseaudio"
-          "custom/notifications"
+          "custom/player"
+          #"custom/gpu"
         ];
-
-        # Right bar modules
         modules-right = [
-          "network"
-          "battery"
           "tray"
           #"custom/hostname"
-          "group/group-power"
+          "network"
+          "battery"
+          "custom/hypridle"
+          "custom/currentplayer"
+          "pulseaudio"
+          "custom/notifications"
+          "clock"
         ];
 
         clock = {
@@ -224,21 +82,29 @@ in {
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
-
         cpu = {
-          format = "   {usage}%";
+          format = " {usage}%";
           on-click = btm-kitty;
         };
+        "custom/gpu" = {
+          interval = 5;
+          return-type = "json";
+          exec = jsonOutput "gpu" {
+            text = "";
 
+            tooltip = "";
+          };
+          on-click = "${nvtop-kitty}";
+          format = "{} %";
+        };
         memory = {
-          format = "󰍛  {}%";
+          format = "󰍛 {}%";
           on-click = btm-kitty;
           interval = 5;
         };
-
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "   0%";
+          format = "{icon} {volume}%";
+          format-muted = " 0%";
           format-icons = {
             headphone = "󰋋";
             headset = "󰋎";
@@ -269,26 +135,58 @@ in {
           escape = true;
         };
 
+        "custom/hypridle" = let
+          pgrep = "${pkgs.toybox}/bin/pgrep";
+          pkill = "${pkgs.toybox}/bin/pkill";
+          hypridle = "${pkgs.hypridle}/bin/hypridle";
+        in {
+          interval = 2;
+          # format = "";
+          exec = ''
+            if ${pgrep} "hypridle" > /dev/null
+              then
+                  echo " "
+              else
+                  echo " "
+              fi
+
+          '';
+          tooltip = false;
+
+          on-click = let
+            noti = "${pkgs.noti}/bin/noti";
+          in ''
+            if ${pgrep} "hypridle" > /dev/null
+            then
+                ${pkill} hypridle
+                ${noti} -t "   Hypridle Inactive"
+            else
+                ${hypridle} &
+                ${noti} -t "   Hypridle Active"
+            fi
+          '';
+        };
+
         "hyprland/workspaces" = {
-          format-window-separator = " ";
+          format-window-separator = "";
           active-only = false;
           all-outputs = false;
           show-special = true;
           window-rewrite-default = "";
-          format = "{name} {windows}";
+          format = "{name}{windows}";
           "window-rewrite" = {
-            "title<.*youtube.*>" = "";
-            "brave" = "";
-            "class<firefox> title<.*github.*>" = "";
-            "warp" = "";
-            "kitty" = "";
-            "code" = "󰨞";
-            "Discord" = "󰙯";
-            "class<Spotify>" = "󰓇";
+            "title<.*youtube.*>" = " ";
+            "class<firefox>" = " ";
+            "class<firefox> title<.*github.*>" = " ";
+            "warp" = " ";
+            "kitty" = " ";
+            "codium-url-handler" = " 󰨞";
+            "Discord" = " 󰙯";
+            "spotube" = " 󰓇";
             "matlab" = "󰆧";
-            "Super Productivity" = "󰨟";
-            "Beeper" = "💬";
-            "LM Studio" = "";
+            "Super Productivity" = " 󰨟";
+            "Beeper" = " 💬";
+            "LM Studio" = " ";
           };
         };
 
@@ -300,15 +198,13 @@ in {
           format-charging = "󰂄 {capacity}%";
           onclick = "";
         };
-
         "sway/window" = {
           max-length = 20;
         };
-
         network = {
           interval = 3;
-          format-wifi = "   {essid}";
-          format-ethernet = "󰈁 Connected";
+          format-wifi = "  {essid}";
+          format-ethernet = "󰈁";
           format-disconnected = "";
           tooltip-format = ''
             {ifname}
@@ -319,7 +215,7 @@ in {
         };
 
         "custom/hostname" = {
-          exec = "echo @$HOSTNAME";
+          exec = "echo $USER@$HOSTNAME";
         };
 
         "custom/currentplayer" = {
@@ -343,11 +239,11 @@ in {
           format-icons = {
             "No player active" = " ";
             "Celluloid" = "󰎁 ";
-            "spotify" = " 󰓇";
-            "ncspot" = " 󰓇";
+            "spotube" = "󰓇";
+            "ncspot" = "󰓇";
             "qutebrowser" = "󰖟";
-            "brave" = " ";
-            "discord" = " 󰙯 ";
+            "firefox" = " ";
+            "discord" = "󰙯 ";
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
           };
@@ -356,10 +252,12 @@ in {
         };
         "custom/player" = {
           exec-if = "${playerctl} status";
-          exec = ''${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
+          exec = ''
+            ${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' | sed 's/\&/&amp;/g'
+          '';
           return-type = "json";
           interval = 2;
-          max-length = 30;
+          #max-length = 30;
           format = "{icon} {}";
           format-icons = {
             "Playing" = "󰐊";
@@ -368,45 +266,67 @@ in {
           };
           on-click = "${playerctl} play-pause";
         };
-
-        "group/group-power" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 500;
-            transition-left-to-right = true;
-          };
-          modules = [
-            "custom/power"
-            "custom/quit"
-            "custom/lock"
-            "custom/reboot"
-          ];
-        };
-
-        "custom/quit" = {
-          format = "󰗼";
-          on-click = "${pkgs.hyprland}/bin/hyprctl dispatch exit";
-          tooltip = false;
-        };
-
-        "custom/lock" = {
-          format = "󰍁";
-          on-click = "${lib.getExe pkgs.hyprlock}";
-          tooltip = false;
-        };
-
-        "custom/reboot" = {
-          format = "󰜉";
-          on-click = "${pkgs.systemd}/bin/systemctl reboot";
-          tooltip = false;
-        };
-
-        "custom/power" = {
-          format = "";
-          on-click = "${pkgs.systemd}/bin/systemctl poweroff";
-          tooltip = false;
-        };
       };
     };
+    # Cheatsheet:
+    # x -> all sides
+    # x y -> vertical, horizontal
+    # x y z -> top, horizontal, bottom
+    # w x y z -> top, right, bottom, left
+
+    style = with config.lib.stylix;
+    # css
+      ''
+
+        * {
+            font-size: 8pt;
+        }
+
+        window#waybar {
+            background-color: transparent;
+        }
+
+
+        #workspaces button.focused,
+        #workspaces button.active,
+
+        #clock,
+        #cpu,
+        #memory,
+        #custom-notifications,
+        #custom-hostname,
+        #battery,
+        #custom-hypridle,
+        #network,
+        #pulseaudio,
+        #tray,
+        #custom-currentplayer,
+        #custom-player
+        {
+            background-color:  #${colors.base01}; /* 01 */
+            color: #${colors.base0D}; /* 05 */
+            padding: 0px 8px;
+            border-radius: 10px;
+            margin: 3px;
+            border: 1px solid #${colors.base0D};
+        }
+
+
+        #workspaces button {
+            border-radius: 5;
+            padding: 0 8px
+        }
+
+        #workspaces button,
+        #workspaces button.hidden
+        {
+            background-color: #${colors.base01}; /* 0A */
+            color: #${colors.base0D}; /* 00 */
+            padding: 0px 8px;
+            border-radius: 10px;
+            margin: 3px;
+            border: 1px solid #${colors.base0D};
+        }
+      '';
   };
 }

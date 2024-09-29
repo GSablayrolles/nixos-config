@@ -20,6 +20,7 @@
             llvm-vs-code-extensions.vscode-clangd
             rust-lang.rust-analyzer
             vadimcn.vscode-lldb
+            ocamllabs.ocaml-platform
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
