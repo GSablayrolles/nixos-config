@@ -7,7 +7,7 @@ in {
   imports = [
     #./swaync.nix
     ./waybar.nix
-    ./rofi.nix
+    ./rofi
     ./cliphist.nix
     #./hyprlock.nix
     #./hypridle.nix
