@@ -19,9 +19,9 @@
     enable = true;
     userName = "Guillaume Sablayrolles";
     userEmail = "g.sablayrolles@proton.me";
-	  extraConfig = {
+    extraConfig = {
       credential.helper = "store";
-};
+    };
   };
 
   programs.direnv = {
@@ -35,7 +35,7 @@
     enable = true;
   };
 
-    monitors = [
+  monitors = [
     {
       name = "HDMI-A-1";
       width = 1920;
@@ -52,5 +52,4 @@
       primary = true;
     }
   ];
-
 }
