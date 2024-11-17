@@ -9,32 +9,23 @@
     ./config.nix
     ./locale.nix
     ./nix.nix
-    ./gnome.nix
+    ./stylix.nix
     ./users/guillaume
   ];
   networking.hostName = "atlantis";
   services = {
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      desktopManager.gnome = {
-        enable = true;
-      };
-      displayManager.gdm = {
-        enable = true;
-      };
     };
   };
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+    hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
 
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -62,18 +53,18 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  ### XDG Portals
-  #xdg = {
-  #  portal = {
-  #    enable = true;
-  #    extraPortals = with pkgs; [
-  #      xdg-desktop-portal
-  #      xdg-desktop-portal-gtk
-  #    ];
-  #  };
-  #};
+  ## XDG Portals
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
+    };
+  };
 
-  #environment.systemPackages = [
-  #  pkgs.xdg-utils # xdg-open
-  #];
+  environment.systemPackages = [
+    pkgs.xdg-utils # xdg-open
+  ];
 }
