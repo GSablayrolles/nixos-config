@@ -22,6 +22,7 @@
   services.printing.enable = true;
 
   hardware.pulseaudio.enable = false;
+  
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -30,7 +31,7 @@
     pulse.enable = true;
   };
 
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [vim];
   services.blueman.enable = true;
@@ -38,5 +39,5 @@
   # Hyprland
   programs.hyprland.enable = true;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.11";
 }
