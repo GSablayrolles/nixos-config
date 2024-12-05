@@ -16,7 +16,6 @@
             pkief.material-icon-theme
             nvarner.typst-lsp
             tomoki1207.pdf
-            catppuccin.catppuccin-vsc
             llvm-vs-code-extensions.vscode-clangd
             rust-lang.rust-analyzer
             vadimcn.vscode-lldb
