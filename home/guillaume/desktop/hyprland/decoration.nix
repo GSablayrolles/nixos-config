@@ -11,13 +11,10 @@
     };
 
     decoration = {
-      rounding = 6;
-
-      shadow = {
-        enabled = true;
-        range = 12;
-        offset = "3 3";
-      };
+        shadow = {
+            enabled = false;
+        };
+        rounding = 6;
     };
   };
 }
