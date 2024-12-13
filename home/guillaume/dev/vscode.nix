@@ -20,6 +20,8 @@
             rust-lang.rust-analyzer
             vadimcn.vscode-lldb
             ocamllabs.ocaml-platform
+            myriad-dreamin.tinymist
+            denoland.vscode-deno
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -77,6 +79,9 @@
         userSettings.git.autofetch = true;
         userSettings.git.confirmSync = false;
 
+        # Nix IDE
+        userSettings.nix-ide.formatterPath = "nixfmt";
+    
 
     };
 
