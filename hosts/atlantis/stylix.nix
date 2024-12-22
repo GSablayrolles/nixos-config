@@ -15,8 +15,8 @@
     };
     fonts = {
       monospace = {
-        name = "FiraCode Nerd Font";
-        package = pkgs.nerd-fonts.fira-code;
+        name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono;
       };
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
