@@ -42,6 +42,7 @@
       height = 1080;
       x = 0;
       workspace = "1";
+      refreshRate = 75;
     }
     {
       name = "DP-1";
@@ -50,6 +51,7 @@
       x = 1920;
       workspace = "2";
       primary = true;
+      refreshRate = 120;
     }
   ];
 }
