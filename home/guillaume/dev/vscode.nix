@@ -57,9 +57,6 @@
 
         # Theme and iconTheme
         userSettings.workbench.iconTheme = "material-icon-theme";
-        userSettings.workbench.colorTheme = "Catppuccin Frappé";
-
-        userSettings.catppuccin.accentColor = "green";
 
         # Indent
         userSettings.editor.detectIndentation = false;

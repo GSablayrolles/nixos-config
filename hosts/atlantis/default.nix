@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   imports = [
@@ -66,5 +67,6 @@
 
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open
+    inputs.hyprland-qtutils.packages.${pkgs.system}.default
   ];
 }
