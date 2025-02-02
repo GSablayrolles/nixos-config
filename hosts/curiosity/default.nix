@@ -22,6 +22,10 @@
       enable = true;
       xkb.layout = "fr";
     };
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
