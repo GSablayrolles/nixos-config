@@ -26,6 +26,10 @@
       enable = true;
       package = pkgs.mariadb;
     };
+    postgresql = {
+        enable = true;
+        package = pkgs.postgresql_17;
+    };
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
