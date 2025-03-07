@@ -14,7 +14,6 @@
             oderwat.indent-rainbow
             github.github-vscode-theme
             pkief.material-icon-theme
-            nvarner.typst-lsp
             tomoki1207.pdf
             llvm-vs-code-extensions.vscode-clangd
             rust-lang.rust-analyzer
