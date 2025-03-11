@@ -105,7 +105,7 @@ in {
 
       "listview" = {
         padding = mkLiteral "4px 0px";
-        columns = 2;
+        columns = 1;
         scrollbar = true;
       };
 
@@ -115,7 +115,7 @@ in {
       };
 
       "element-icon" = {
-        size = mkLiteral "0.8em";
+        size = mkLiteral "2em";
       };
 
       "element-text" = {

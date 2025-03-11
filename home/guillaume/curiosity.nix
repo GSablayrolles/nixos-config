@@ -13,6 +13,7 @@
     pfetch
     neofetch
     pipes
+    obsidian
   ];
 
   programs.git = {
