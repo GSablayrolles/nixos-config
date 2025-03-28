@@ -112,6 +112,7 @@ in {
       "element" = {
         padding = mkLiteral "4px 8px";
         spacing = mkLiteral "8px";
+        border-radius = mkLiteral "10px";
       };
 
       "element-icon" = {
