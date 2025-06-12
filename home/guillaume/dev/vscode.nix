@@ -21,6 +21,7 @@
             ocamllabs.ocaml-platform
             myriad-dreamin.tinymist
             denoland.vscode-deno
+            prisma.prisma
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
@@ -41,6 +42,13 @@
                 version = "1.2.2";
                 sha256 = "KR4BtLupplhTBPIvdg4cj0lbkTJROQ6tavOP4wdu8rA=";
             }
+            {
+                name = "vscode-spring-boot";
+                publisher="vmware";
+                version = "1.61.1";
+                sha256 = "sha256-xhAX6HUxyuwWr+wzUDrMZ4fdsOuf2b08/d8LvavPQqE=";
+            }
+          
             ];
 
 

@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
     image = ./red_mountains.png;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
       name = "Numix-Cursor-Light";
