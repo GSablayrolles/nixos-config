@@ -4,9 +4,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
     config = {
       allowUnfree = true;
     };
@@ -22,7 +23,7 @@
   services.printing.enable = true;
 
   hardware.pulseaudio.enable = false;
-  
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -34,8 +35,8 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
-    vim 
-    nil
+    vim
+
   ];
   services.blueman.enable = true;
 
