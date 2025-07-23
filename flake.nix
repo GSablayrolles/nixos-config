@@ -46,7 +46,7 @@
         ];
       };
   in {
-    formatter = forEachPkgs (pkgs: pkgs.alejandra);
+    formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
 
     nixosConfigurations = {
       curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";
