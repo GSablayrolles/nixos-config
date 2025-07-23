@@ -24,4 +24,5 @@
       emoji = config.stylix.fonts.monospace;
     };
   };
+
 }

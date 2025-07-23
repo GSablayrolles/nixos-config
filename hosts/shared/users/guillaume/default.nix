@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }:
 {
@@ -14,8 +13,8 @@
           "wheel"
         ];
         shell = pkgs.zsh;
-        initialPassword = "tmp10";
         home = "/home/guillaume";
+
       };
     };
   };

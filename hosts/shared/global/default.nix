@@ -1,11 +1,13 @@
 {
-  inputs,
-  lib,
-  config,
   pkgs,
   ...
 }:
 {
+  imports = [
+    ./locale.nix
+    ./nix.nix
+  ];
+
   nixpkgs = {
     overlays = [ ];
     config = {
