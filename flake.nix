@@ -46,6 +46,7 @@
         ];
       };
   in {
+    nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
     formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
 
     nixosConfigurations = {
