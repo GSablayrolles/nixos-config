@@ -3,15 +3,18 @@
   config,
   ...
 }:
- {
+{
   users = {
     users = {
       guillaume = {
         isNormalUser = true;
         description = "Guillaume";
-        extraGroups = ["networkmanager" "wheel"];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
         shell = pkgs.zsh;
-        initialPassword="tmp10";
+        initialPassword = "tmp10";
         home = "/home/guillaume";
       };
     };

@@ -1,6 +1,7 @@
-{...} : {
-    imports = [
-        ./kitty.nix
-        ./oh-my-zsh.nix
-    ];
+{ ... }:
+{
+  imports = [
+    ./kitty.nix
+    ./oh-my-zsh.nix
+  ];
 }

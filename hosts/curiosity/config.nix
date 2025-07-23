@@ -4,9 +4,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
     config = {
       allowUnfree = true;
     };
@@ -33,7 +34,7 @@
 
   services.libinput.enable = true;
 
-  environment.systemPackages = with pkgs; [vim];
+  environment.systemPackages = with pkgs; [ vim ];
   services.blueman.enable = true;
 
   # Hyprland

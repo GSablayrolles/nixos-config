@@ -2,8 +2,10 @@
   config,
   lib,
   ...
-}: let
-in {
+}:
+let
+in
+{
   programs.kitty = {
     enable = true;
     settings = {

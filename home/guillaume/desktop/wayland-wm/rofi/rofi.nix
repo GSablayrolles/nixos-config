@@ -2,9 +2,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cliphist-rofi-img = ".config/rofi/cliphist-rofi-img";
-in {
+in
+{
   home.file.${cliphist-rofi-img} = {
     text = ''
         #!/usr/bin/env bash
@@ -47,95 +49,97 @@ in {
       dpi = 1;
     };
 
-    theme = let
-      # Use `mkLiteral` for string-like values that should show without
-      # quotes, e.g.:
-      # {
-      #   foo = "abc"; =&gt; foo: "abc";
-      #   bar = mkLiteral "abc"; =&gt; bar: abc;
-      # };
-      inherit (config.lib.formats.rasi) mkLiteral;
-    in {
-      "*" = {
-        margin = 0;
-        padding = 0;
-        spacing = 0;
-      };
+    theme =
+      let
+        # Use `mkLiteral` for string-like values that should show without
+        # quotes, e.g.:
+        # {
+        #   foo = "abc"; =&gt; foo: "abc";
+        #   bar = mkLiteral "abc"; =&gt; bar: abc;
+        # };
+        inherit (config.lib.formats.rasi) mkLiteral;
+      in
+      {
+        "*" = {
+          margin = 0;
+          padding = 0;
+          spacing = 0;
+        };
 
-      "window" = {
-        width = mkLiteral "50%";
-        height = mkLiteral "50%";
-        x-offset = mkLiteral "0px";
-        y-offset = mkLiteral "0px";
-        padding = mkLiteral "5px";
+        "window" = {
+          width = mkLiteral "50%";
+          height = mkLiteral "50%";
+          x-offset = mkLiteral "0px";
+          y-offset = mkLiteral "0px";
+          padding = mkLiteral "5px";
 
-        border = mkLiteral "2px";
-        border-radius = mkLiteral "6px";
-      };
+          border = mkLiteral "2px";
+          border-radius = mkLiteral "6px";
+        };
 
-      "inputbar" = {
-        spacing = mkLiteral "0px";
-        padding = mkLiteral "3px";
-        children = mkLiteral ''[ "entry","num-filtered-rows","textbox-num-sep","num-rows" ]'';
-      };
+        "inputbar" = {
+          spacing = mkLiteral "0px";
+          padding = mkLiteral "3px";
+          children = mkLiteral ''[ "entry","num-filtered-rows","textbox-num-sep","num-rows" ]'';
+        };
 
-      "num-filtered-rows" = {
-        expand = false;
-        text-color = mkLiteral "Gray";
-      };
+        "num-filtered-rows" = {
+          expand = false;
+          text-color = mkLiteral "Gray";
+        };
 
-      "textbox-num-sep" = {
-        expand = false;
-        str = "/";
-        text-color = mkLiteral "Gray";
-      };
+        "textbox-num-sep" = {
+          expand = false;
+          str = "/";
+          text-color = mkLiteral "Gray";
+        };
 
-      "num-rows" = {
-        expand = false;
-        text-color = mkLiteral "Gray";
-      };
+        "num-rows" = {
+          expand = false;
+          text-color = mkLiteral "Gray";
+        };
 
-      "entry, element-icon, element-text" = {
-        vertical-align = mkLiteral "0.5";
-      };
+        "entry, element-icon, element-text" = {
+          vertical-align = mkLiteral "0.5";
+        };
 
-      "textbox" = {
-        padding = mkLiteral "4px 8px";
-      };
+        "textbox" = {
+          padding = mkLiteral "4px 8px";
+        };
 
-      "listview" = {
-        padding = mkLiteral "4px 0px";
-        columns = 1;
-        scrollbar = true;
-      };
+        "listview" = {
+          padding = mkLiteral "4px 0px";
+          columns = 1;
+          scrollbar = true;
+        };
 
-      "element" = {
-        padding = mkLiteral "4px 8px";
-        spacing = mkLiteral "8px";
-        border-radius = mkLiteral "10px";
-      };
+        "element" = {
+          padding = mkLiteral "4px 8px";
+          spacing = mkLiteral "8px";
+          border-radius = mkLiteral "10px";
+        };
 
-      "element-icon" = {
-        size = mkLiteral "2em";
-      };
+        "element-icon" = {
+          size = mkLiteral "2em";
+        };
 
-      "element-text" = {
-        text-color = mkLiteral "inherit";
-      };
+        "element-text" = {
+          text-color = mkLiteral "inherit";
+        };
 
-      "scrollbar" = {
-        handle-width = mkLiteral "4px";
-        padding = mkLiteral "0 4px";
-      };
+        "scrollbar" = {
+          handle-width = mkLiteral "4px";
+          padding = mkLiteral "0 4px";
+        };
 
-      "sidebar" = {
-        "border" = mkLiteral "2px dash 0px 0px";
-      };
+        "sidebar" = {
+          "border" = mkLiteral "2px dash 0px 0px";
+        };
 
-      "button" = {
-        cursor = "pointer";
-        spacing = 0;
+        "button" = {
+          cursor = "pointer";
+          spacing = 0;
+        };
       };
-    };
   };
 }

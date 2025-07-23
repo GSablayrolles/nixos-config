@@ -1,3 +1,4 @@
-{config, ...}:  {
+{ config, ... }:
+{
   services.cliphist.enable = true;
 }

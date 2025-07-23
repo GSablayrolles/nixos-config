@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./binds.nix
     ./window-bind.nix
@@ -13,17 +14,19 @@
 
     xwayland.enable = true;
 
-    extraConfig = let
-      swww-script = pkgs.writeShellScript "swww-script" ''
-        # have pre-start here itself
-        ${pkgs.swww}/bin/swww init &
+    extraConfig =
+      let
+        swww-script = pkgs.writeShellScript "swww-script" ''
+          # have pre-start here itself
+          ${pkgs.swww}/bin/swww init &
 
-        # Start Service here
-        ${pkgs.swww}/bin/swww clear 000000
+          # Start Service here
+          ${pkgs.swww}/bin/swww clear 000000
+        '';
+      in
+      ''
+        exec-once = ${swww-script}
       '';
-    in ''
-      exec-once = ${swww-script}
-    '';
 
     settings = {
       env = [

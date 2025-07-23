@@ -4,8 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
-  
+}:
+let
 
   # Dependencies
   cut = "${pkgs.coreutils}/bin/cut";
@@ -20,25 +20,29 @@
   nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: {
-    pre ? "",
-    text ? "",
-    tooltip ? "",
-    alt ? "",
-    class ? "",
-    percentage ? "",
-  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
-    set -euo pipefail
-    ${pre}
-    ${jq} -cn \
-      --arg text "${text}" \
-      --arg tooltip "${tooltip}" \
-      --arg alt "${alt}" \
-      --arg class "${class}" \
-      --arg percentage "${percentage}" \
-      '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
-  ''}/bin/waybar-${name}";
-in {
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
+    }:
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text "${text}" \
+        --arg tooltip "${tooltip}" \
+        --arg alt "${alt}" \
+        --arg class "${class}" \
+        --arg percentage "${percentage}" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
+in
+{
   stylix.targets.waybar.enable = false;
 
   programs.waybar = {
@@ -51,8 +55,7 @@ in {
         exclusive = false;
         fixed-center = false;
         modules-left =
-          lib.optionals
-          config.wayland.windowManager.hyprland.enable [
+          lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
           ]
@@ -109,7 +112,11 @@ in {
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
@@ -135,37 +142,41 @@ in {
           escape = true;
         };
 
-        "custom/hypridle" = let
-          pgrep = "${pkgs.toybox}/bin/pgrep";
-          pkill = "${pkgs.toybox}/bin/pkill";
-          hypridle = "${pkgs.hypridle}/bin/hypridle";
-        in {
-          interval = 2;
-          # format = "";
-          exec = ''
-            if ${pgrep} "hypridle" > /dev/null
-              then
-                  echo " "
-              else
-                  echo " "
-              fi
+        "custom/hypridle" =
+          let
+            pgrep = "${pkgs.toybox}/bin/pgrep";
+            pkill = "${pkgs.toybox}/bin/pkill";
+            hypridle = "${pkgs.hypridle}/bin/hypridle";
+          in
+          {
+            interval = 2;
+            # format = "";
+            exec = ''
+              if ${pgrep} "hypridle" > /dev/null
+                then
+                    echo " "
+                else
+                    echo " "
+                fi
 
-          '';
-          tooltip = false;
+            '';
+            tooltip = false;
 
-          on-click = let
-            noti = "${pkgs.noti}/bin/noti";
-          in ''
-            if ${pgrep} "hypridle" > /dev/null
-            then
-                ${pkill} hypridle
-                ${noti} -t "   Hypridle Inactive"
-            else
-                ${hypridle} &
-                ${noti} -t "   Hypridle Active"
-            fi
-          '';
-        };
+            on-click =
+              let
+                noti = "${pkgs.noti}/bin/noti";
+              in
+              ''
+                if ${pgrep} "hypridle" > /dev/null
+                then
+                    ${pkill} hypridle
+                    ${noti} -t "   Hypridle Inactive"
+                else
+                    ${hypridle} &
+                    ${noti} -t "   Hypridle Active"
+                fi
+              '';
+          };
 
         "hyprland/workspaces" = {
           format-window-separator = "";
@@ -193,7 +204,18 @@ in {
         battery = {
           bat = "BAT0";
           interval = 10;
-          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
@@ -274,8 +296,9 @@ in {
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
 
-    style = with config.lib.stylix;
-    # css
+    style =
+      with config.lib.stylix;
+      # css
       ''
 
         * {

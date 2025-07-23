@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland.settings = {
     general = {
       gaps_out = 5;
@@ -11,10 +12,10 @@
     };
 
     decoration = {
-        shadow = {
-            enabled = false;
-        };
-        rounding = 6;
+      shadow = {
+        enabled = false;
+      };
+      rounding = 6;
     };
   };
 }

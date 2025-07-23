@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   stylix = {
     enable = true;
     image = ./red_mountains.png;
