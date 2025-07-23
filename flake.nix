@@ -28,32 +28,7 @@
   }: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
-   
-    mkShell =
-        system:
-        nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          # buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-          packages =
-            with nixpkgs.legacyPackages.${system};
-            with pkgs;
-            [
-              nil
-              statix
-              python311Packages.nix-prefetch-github
-              nixos-generators
-              # nix-du
-              graphviz
-              sops
-              age
-              deadnix
-              just
-            ]
-            ++ [
-              pkgs.home-manager
-            ];
-        };
-   
+    
     mkNixos = user: host: system:
       nixpkgs.lib.nixosSystem {
         inherit system;
@@ -75,7 +50,6 @@
     nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
     formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
 
-    devShells."x86_64-linux".default = mkShell "x86_64-linux";
 
     nixosConfigurations = {
       curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";
