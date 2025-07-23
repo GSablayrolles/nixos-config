@@ -33,7 +33,10 @@
 
   services.libinput.enable = true;
 
-  environment.systemPackages = with pkgs; [vim];
+  environment.systemPackages = with pkgs; [
+    vim 
+    nixd
+  ];
   services.blueman.enable = true;
 
   # Hyprland
