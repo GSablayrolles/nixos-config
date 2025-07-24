@@ -14,17 +14,6 @@
     obsidian
   ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableZshIntegration = true;
-  };
-
-  # Browser
-  programs.brave = {
-    enable = true;
-  };
-
   monitors = [
     {
       name = "HDMI-A-1";
