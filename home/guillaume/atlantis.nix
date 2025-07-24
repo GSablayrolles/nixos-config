@@ -6,6 +6,12 @@
     ./features
   ];
 
+  home-config = {
+    cli = {
+      yazi.enable = true;
+    };
+  };
+
   monitors = [
     {
       name = "HDMI-A-1";

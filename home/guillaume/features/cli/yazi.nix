@@ -1,10 +1,13 @@
 {
+  config,
   ...
 }:
-
+let
+  inherit (config.home-config.cli.yazi) enable;
+in
 {
   programs.yazi = {
-    enable = true;
+    inherit enable;
     enableFishIntegration = true;
   };
 }
