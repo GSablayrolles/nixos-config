@@ -3,6 +3,6 @@
   imports = [
     ./desktop
     ./dev
-    ./terminal
+    ./cli
   ];
 }

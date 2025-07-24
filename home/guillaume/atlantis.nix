@@ -1,17 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     ./shared
     ./features
-  ];
-
-  home.packages = with pkgs; [
-    kitty # terminal
-    pfetch
-    neofetch
-    pipes
-    obsidian
   ];
 
   monitors = [
