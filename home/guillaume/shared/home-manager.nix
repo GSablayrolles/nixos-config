@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   ...
 }:
 {
@@ -9,8 +7,9 @@
     homeDirectory = "/home/guillaume";
   };
 
-  home.sessionVariables.GTK_THEME = "marwaita-pop_os";
+  home.sessionVariables._THEME = "marwaita-pop_os";
   home.sessionVariables.TERMINAL = "kitty";
+
   nixpkgs = {
     config = {
       allowUnfree = true;

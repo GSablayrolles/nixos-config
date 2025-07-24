@@ -1,19 +1,16 @@
 { pkgs, ... }:
 {
   imports = [
-    ./desktop
-    ./home-manager.nix
-    ./dev
-    ./terminal
-    ./options
+    ./shared
+    ./features
   ];
 
   home.packages = with pkgs; [
     kitty # terminal
-    discord
     pfetch
     neofetch
     pipes
+    obsidian
   ];
 
   programs.git = {
