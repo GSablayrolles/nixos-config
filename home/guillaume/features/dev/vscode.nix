@@ -1,6 +1,15 @@
-{ pkgs, config, ... }:
 {
-  programs.vscode = {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  inherit (lib) mkIf;
+  cfg = config.home-config.dev;
+in
+{
+  programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
     package = pkgs.vscode-fhs;
 

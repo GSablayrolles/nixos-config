@@ -48,5 +48,9 @@ in
         Enable stylix (if enabled in NixOS config)
       '';
     };
+
+    dev = {
+      vscode.enable = mkEnableOption "Enable vscode";
+    };
   };
 }

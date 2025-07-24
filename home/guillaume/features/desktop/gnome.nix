@@ -6,9 +6,10 @@
 }:
 let
   inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
 in
 {
-  dconf.settings = {
+  dconf.settings = mkIf cfg.gnome.enable {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
@@ -114,19 +115,22 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    pop-launcher
-    gnomeExtensions.pop-shell
-    gnomeExtensions.pop-launcher-super-key
-    gnomeExtensions.caffeine
-    gnomeExtensions.just-perfection
-    gnomeExtensions.clipboard-indicator
-    #gnomeExtensions.media-controls
-    gnomeExtensions.vitals
-    gnomeExtensions.workspace-indicator
-    gnomeExtensions.alttab-mod
-    gnomeExtensions.upower-battery
-    gnomeExtensions.battery-time-2
-    gnomeExtensions.hide-top-bar
-  ];
+  home.packages = mkIf cfg.gnome.enable (
+    with pkgs;
+    [
+      pop-launcher
+      gnomeExtensions.pop-shell
+      gnomeExtensions.pop-launcher-super-key
+      gnomeExtensions.caffeine
+      gnomeExtensions.just-perfection
+      gnomeExtensions.clipboard-indicator
+      #gnomeExtensions.media-controls
+      gnomeExtensions.vitals
+      gnomeExtensions.workspace-indicator
+      gnomeExtensions.alttab-mod
+      gnomeExtensions.upower-battery
+      gnomeExtensions.battery-time-2
+      gnomeExtensions.hide-top-bar
+    ]
+  );
 }

@@ -22,8 +22,9 @@
         nvidia = true;
       };
       enable = true;
-
     };
+
+    dev.vscode.enable = true;
   };
 
   monitors = [
