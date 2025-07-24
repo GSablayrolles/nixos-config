@@ -4,11 +4,13 @@ let
 in
 {
   options.home-config = {
-    cli = {
-      yazi.enable = mkEnableOption ''
-        Enable Yazi
-      '';
+    apps = {
+      brave.enable = mkEnableOption "Enable Brave";
+    };
 
+    cli = {
+      yazi.enable = mkEnableOption "Enable Yazi";
+      tools.enable = mkEnableOption "Enable terminal tools";
     };
   };
 }

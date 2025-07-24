@@ -1,6 +1,9 @@
-{ ... }:
+{ config, ... }:
+let
+  inherit (config.home-config.cli.yazi) enable;
+in
 {
   programs.brave = {
-    enable = true;
+    inherit enable;
   };
 }

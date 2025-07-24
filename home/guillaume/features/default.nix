@@ -4,5 +4,6 @@
     ./desktop
     ./dev
     ./cli
+    ./apps
   ];
 }

@@ -7,8 +7,13 @@
   ];
 
   home-config = {
+    apps = {
+      brave.enable = true;
+    };
+
     cli = {
       yazi.enable = true;
+      tools.enable = true;
     };
   };
 
