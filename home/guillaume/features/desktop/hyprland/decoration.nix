@@ -3,8 +3,12 @@
   lib,
   ...
 }:
+let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
+in
 {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     general = {
       gaps_out = 5;
       # "col.active_border" = "0xff${palette.base0C}";

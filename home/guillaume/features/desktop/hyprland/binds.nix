@@ -5,10 +5,11 @@
   ...
 }:
 let
-  inherit (lib) ;
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
 in
 {
-  wayland = {
+  wayland = mkIf cfg.hyprland.enable {
     windowManager.hyprland.settings.binde =
       let
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";

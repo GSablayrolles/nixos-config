@@ -6,7 +6,8 @@
   ...
 }:
 let
-
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
   # Dependencies
   cut = "${pkgs.coreutils}/bin/cut";
   wc = "${pkgs.coreutils}/bin/wc";
@@ -45,7 +46,7 @@ in
 {
   stylix.targets.waybar.enable = false;
 
-  programs.waybar = {
+  programs.waybar = mkIf cfg.wayland.enable {
     enable = true;
     systemd.enable = true;
     settings = {
@@ -202,7 +203,7 @@ in
         };
 
         battery = {
-          bat = "BAT0";
+          bat = cfg.wayland.waybarConfig.batteryName;
           interval = 10;
           format-icons = [
             "󰁺"

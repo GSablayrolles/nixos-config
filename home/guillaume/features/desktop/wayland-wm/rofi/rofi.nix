@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
   cliphist-rofi-img = ".config/rofi/cliphist-rofi-img";
 in
 {
@@ -34,7 +37,7 @@ in
     '';
     executable = true;
   };
-  programs.rofi = {
+  programs.rofi = mkIf cfg.wayland.enable {
     enable = true;
     package = pkgs.rofi-wayland;
 

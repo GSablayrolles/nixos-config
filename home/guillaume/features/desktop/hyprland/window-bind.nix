@@ -4,7 +4,8 @@
   ...
 }:
 let
-  inherit (lib) ;
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
 
   workspaces = (map toString (lib.range 0 9)) ++ (map (n: "F${toString n}") (lib.range 1 12));
   # Map keys to hyprland directions
@@ -36,7 +37,7 @@ let
   toAzerty = n: if (builtins.elem n (lib.attrNames azerty)) then azerty.${n} else n;
 in
 {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     bindm = [
       "SUPER,mouse:272,movewindow"
       "SUPER,mouse:273,resizewindow"

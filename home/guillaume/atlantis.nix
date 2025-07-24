@@ -15,6 +15,15 @@
       yazi.enable = true;
       tools.enable = true;
     };
+
+    desktop.wayland = {
+      hyprland = {
+        enable = true;
+        nvidia = true;
+      };
+      enable = true;
+
+    };
   };
 
   monitors = [

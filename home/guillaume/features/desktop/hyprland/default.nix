@@ -1,7 +1,13 @@
 {
   pkgs,
+  lib,
+  config,
   ...
 }:
+let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
+in
 {
   imports = [
     ./binds.nix
@@ -9,7 +15,7 @@
     ./decoration.nix
   ];
 
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
     enable = true;
 
     xwayland.enable = true;

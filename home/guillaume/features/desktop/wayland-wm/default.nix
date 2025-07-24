@@ -5,7 +5,8 @@
   ...
 }:
 let
-  inherit (lib) ;
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
 in
 {
   imports = [
@@ -16,7 +17,7 @@ in
     #./hyprlock.nix
     #./hypridle.nix
   ];
-  home.packages = (
+  home.packages = mkIf cfg.wayland.enable (
     with pkgs;
     [
       meson
@@ -28,5 +29,5 @@ in
     ]
   );
 
-  services.playerctld.enable = true;
+  services.playerctld.enable = cfg.wayland.enable;
 }
