@@ -20,7 +20,15 @@ in
 
     xwayland.enable = true;
 
-    # extraConfig = let in;
+    extraConfig =
+      let
+        swaync = lib.getExe' pkgs.swaynotificationcenter "swaync";
+        hypridle = lib.getExe pkgs.hypridle;
+      in
+      ''
+        exec-once = ${swaync}
+        exec-once = ${hypridle}
+      '';
 
     settings = {
       env = [
