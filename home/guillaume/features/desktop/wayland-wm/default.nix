@@ -11,7 +11,8 @@ in
 {
   imports = [
     #./swaync.nix
-    ./waybar.nix
+    # ./waybar.nix
+    ./waybar-new.nix
     ./rofi
     ./cliphist.nix
     #./hyprlock.nix
