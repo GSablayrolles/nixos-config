@@ -10,9 +10,10 @@ in
 {
   wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     general = {
-      gaps_out = 5;
-      # "col.active_border" = "0xff${palette.base0C}";
+      gaps_in = 2;
+      gaps_out = 4;
       border_size = 2;
+      layout = "dwindle";
     };
 
     decoration = {

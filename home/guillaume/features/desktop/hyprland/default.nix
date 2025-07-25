@@ -20,22 +20,11 @@ in
 
     xwayland.enable = true;
 
-    extraConfig =
-      let
-        swww-script = pkgs.writeShellScript "swww-script" ''
-          # have pre-start here itself
-          ${pkgs.swww}/bin/swww init &
-
-          # Start Service here
-          ${pkgs.swww}/bin/swww clear 000000
-        '';
-      in
-      ''
-        exec-once = ${swww-script}
-      '';
+    # extraConfig = let in;
 
     settings = {
       env = [
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
         "WLR_NO_HARDWARE_CURSORS,1"
         "NIXOS_OZONE_WL,1"
       ];
