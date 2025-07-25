@@ -7,11 +7,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./config.nix
-    ./locale.nix
-    ./nix.nix
-    ./stylix.nix
-    ./users/guillaume
+    ../shared/users/guillaume
+    ../shared/global
+    ../shared/content/stylix.nix
   ];
   networking.hostName = "curiosity";
   services = {
