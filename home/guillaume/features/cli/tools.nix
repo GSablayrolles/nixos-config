@@ -17,6 +17,8 @@ in
       neofetch
       pipes
       obsidian
+      bat
+      wget
     ]
   );
 

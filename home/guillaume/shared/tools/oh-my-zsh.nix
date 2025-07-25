@@ -1,10 +1,27 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
+
+    shellAliases =
+      let
+        eza = lib.getExe pkgs.eza;
+        bat = lib.getExe pkgs.bat;
+        broot = lib.getExe pkgs.broot;
+      in
+      {
+        ls = "${eza} --long --header --binary --no-permissions --no-user --icons=auto";
+        lss = "ls --total-size";
+        lst = "ls --tree";
+        lsg = "ls --git";
+
+        cat = bat;
+
+        tree = broot;
+      };
 
     plugins = [
       {
@@ -24,6 +41,8 @@
         "git"
         "history"
         "vscode"
+        "copyfile"
+        "copypath"
       ];
       theme = "candy";
     };
