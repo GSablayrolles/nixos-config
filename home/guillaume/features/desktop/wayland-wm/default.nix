@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    ./swaync-new.nix
+    ./swaync.nix
     ./waybars
     ./rofi
     ./cliphist.nix
