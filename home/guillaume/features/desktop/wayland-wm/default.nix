@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    ./swaync.nix
+    ./swaync-new.nix
     ./waybars
     ./rofi
     ./cliphist.nix
@@ -26,6 +26,7 @@ in
       wlroots
       swww
       wl-clipboard
+      swaynotificationcenter
     ]
   );
 

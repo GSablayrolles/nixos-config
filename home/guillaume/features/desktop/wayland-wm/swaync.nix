@@ -86,6 +86,7 @@ in
             "title",
             "notifications"
           ],
+          
           "widget-config": {
             "inhibitors": {
               "text": "Inhibitors",

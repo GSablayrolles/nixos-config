@@ -19,6 +19,7 @@ in
       obsidian
       bat
       wget
+      discord
     ]
   );
 

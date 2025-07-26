@@ -177,6 +177,9 @@ in
         "custom/notifications" = {
           tooltip = false;
           format = "";
+          return-type = "json";
+          exec-if = "which ${swaync-client}";
+          exec = "${swaync-client} -swb";
           on-click = "${swaync-client} -t -sw";
           on-click-right = "${swaync-client} -d -sw";
           escape = true;
@@ -253,7 +256,7 @@ in
       ''
 
         * {
-            font-size:15px;
+            font-size:12px;
             font-family: "CodeNewRoman Nerd Font Propo";
         }
         window#waybar{
