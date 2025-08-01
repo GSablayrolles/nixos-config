@@ -57,6 +57,8 @@
       nixosConfigurations = {
         curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";
         atlantis = mkNixos "guillaume" "atlantis" "x86_64-linux";
+        iss = mkNixos "guillaume" "iss" "x86_64-linux";
+        
       };
     };
 }

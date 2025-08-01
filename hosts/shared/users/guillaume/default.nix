@@ -15,6 +15,7 @@
         shell = pkgs.zsh;
         home = "/home/guillaume";
 
+        initialPassword = "tmp10";
       };
     };
   };
