@@ -1,0 +1,37 @@
+{
+  config,
+  lib,
+  ...
+}:
+{
+  services.glances.enable = true;
+  services.homepage-dashboard = {
+    enable = true;
+    environmentFile = builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=guillaume.dev";
+
+    customCSS = ''
+      body, html {
+        font-family: SF Pro Display, Helvetica, Arial, sans-serif !important;
+      }
+      .font-medium {
+        font-weight: 700 !important;
+      }
+      .font-light {
+        font-weight: 500 !important;
+      }
+      .font-thin {
+        font-weight: 400 !important;
+      }
+      #information-widgets {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      div#footer {
+        display: none;
+      }
+      .services-group.basis-full.flex-1.px-1.-my-1 {
+        padding-bottom: 3rem;
+      };
+    '';
+  };
+}

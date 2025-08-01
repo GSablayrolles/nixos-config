@@ -11,6 +11,8 @@
     ../shared/users/guillaume
     ../shared/global
     ../shared/content/stylix.nix
+    ../shared/content/homelab
+
   ];
   networking.hostName = "iss";
   services = {
@@ -52,6 +54,14 @@
     # });
 
     package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
+
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 81 ];
+      allowedUDPPorts = [ 53 ];
+    };
   };
 
   ## XDG Portals
