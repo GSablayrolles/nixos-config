@@ -49,9 +49,25 @@
           };
         }
       ];
-      headerStyle = "clean";
+      headerStyle = "boxed";
       hideVersion = true;
+
+      color = "slate";
+      theme = "dark";
     };
+
+    widgets = [
+      {
+        openmeteo = {
+          label = "Toulouse";
+          latitude = 43.6;
+          longitude = 1.43;
+          timezone = "Europe/Paris";
+          units = "metric";
+          cache = 10;
+        };
+      }
+    ];
 
     services = [
       {
