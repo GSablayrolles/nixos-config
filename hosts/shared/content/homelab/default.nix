@@ -4,6 +4,10 @@
   ...
 }:
 {
+  imports = [
+    ./microbin.nix
+  ];
+
   services.glances.enable = true;
   services.homepage-dashboard = {
     enable = true;
@@ -127,8 +131,10 @@
       {
         Services = [
           {
-            Test = {
-              href = "http://localhost:61208";
+            Microbin = {
+              href = "http://localhost:8069";
+              description = "Minimalist copy/paste service";
+              icon = "microbin.png";
             };
           }
         ];
