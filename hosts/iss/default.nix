@@ -57,9 +57,15 @@
   };
 
   networking = {
+    domain = "ferret.party";
+    search = [ "ferret.party" ];
+
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 81 ];
+      allowedTCPPorts = [
+        81
+        61208
+      ];
       allowedUDPPorts = [ 53 ];
     };
   };
