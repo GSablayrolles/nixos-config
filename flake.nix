@@ -17,6 +17,11 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,6 +30,7 @@
       nixpkgs,
       home-manager,
       stylix,
+      sops-nix,
       ...
     }:
     let
@@ -45,6 +51,9 @@
               home-manager.extraSpecialArgs = {
                 inherit (self) inputs outputs;
               };
+              home-manager.sharedModules = [
+                sops-nix.homeManagerModules.sops
+              ];
             }
             stylix.nixosModules.stylix
           ];
@@ -58,7 +67,7 @@
         curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";
         atlantis = mkNixos "guillaume" "atlantis" "x86_64-linux";
         iss = mkNixos "guillaume" "iss" "x86_64-linux";
-        
+
       };
     };
 }
