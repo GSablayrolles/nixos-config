@@ -36,6 +36,8 @@ in
           myriad-dreamin.tinymist
           denoland.vscode-deno
           prisma.prisma
+          redhat.vscode-yaml
+
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {

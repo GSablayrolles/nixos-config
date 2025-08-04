@@ -12,6 +12,7 @@
     ../shared/global
     ../shared/content/stylix.nix
     ../shared/content/homelab
+    ./sops.nix
 
   ];
   networking.hostName = "iss";

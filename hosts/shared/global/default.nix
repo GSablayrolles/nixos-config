@@ -38,8 +38,14 @@
 
   environment.systemPackages = with pkgs; [
     vim
-
   ];
+
+  environment.variables = {
+    EDITOR = "vim";
+    SOPS_EDITOR = "vim";
+
+  };
+
   services.blueman.enable = true;
 
   # Hyprland
