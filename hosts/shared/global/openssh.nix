@@ -18,4 +18,14 @@
     bantime = "24h";
     bantime-increment.enable = true;
   };
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+    };
+  };
 }

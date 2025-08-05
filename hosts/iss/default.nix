@@ -16,6 +16,7 @@
 
   ];
   networking.hostName = "iss";
+
   services = {
     displayManager.sddm = {
       enable = true;
