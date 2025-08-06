@@ -62,6 +62,10 @@
     domain = "ferret.party";
     search = [ "ferret.party" ];
 
+    extraHosts = ''
+      192.168.1.134 atlantis
+    '';
+
     firewall = {
       enable = true;
       allowedTCPPorts = [

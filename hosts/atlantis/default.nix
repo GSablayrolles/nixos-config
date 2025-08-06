@@ -54,6 +54,20 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
+  networking = {
+    domain = "ferret.party";
+    search = [ "ferret.party" ];
+
+    extraHosts = ''
+      192.168.1.154 iss
+    '';
+
+    firewall = {
+      enable = true;
+
+    };
+  };
+
   ## XDG Portals
   xdg = {
     portal = {
