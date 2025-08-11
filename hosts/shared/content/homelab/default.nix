@@ -6,6 +6,7 @@
 {
   imports = [
     ./microbin.nix
+    ./caddy.nix
   ];
 
   services.glances.enable = true;

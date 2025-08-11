@@ -64,13 +64,14 @@
 
     extraHosts = ''
       192.168.1.134 atlantis
+      192.168.1.46 ferret.party
     '';
 
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        81
-        61208
+        80
+        443
       ];
       allowedUDPPorts = [ 53 ];
     };
