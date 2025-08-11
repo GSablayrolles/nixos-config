@@ -1,5 +1,12 @@
 { config, ... }:
 {
+
+  sops.secrets.ssh-host-key = {
+    sopsFile = ../secrets.yaml;
+    owner = "guillaume";
+    neededForUsers = true;
+  };
+
   services.openssh = {
     enable = true;
     ports = [ 22 ];
@@ -10,6 +17,13 @@
       X11Forwarding = false;
       KbdInteractiveAuthentication = false;
     };
+
+    hostKeys = [
+      {
+        inherit (config.sops.secrets.ssh-host-key) path;
+        type = "ed25519";
+      }
+    ];
   };
 
   services.fail2ban = {

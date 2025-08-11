@@ -8,11 +8,11 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./sops.nix
     ../shared/users/guillaume
     ../shared/global
     ../shared/content/stylix.nix
     ../shared/content/homelab
-    ./sops.nix
 
   ];
   networking.hostName = "iss";

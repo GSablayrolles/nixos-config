@@ -1,7 +1,7 @@
 keys:
     - &iss age1se943httw3wx8hhlh7sav9cap9hzyq9jh3hz9dnnwvpqn24dhy8sjhrfyv
 creation_rules:
-    - path_regex: hosts/iss/secrets.yaml$
+    - path_regex: hosts/shared/secrets.yaml$
       key_groups:
           - age:
                 - *iss

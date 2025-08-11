@@ -51,11 +51,12 @@
               home-manager.extraSpecialArgs = {
                 inherit (self) inputs outputs;
               };
-              home-manager.sharedModules = [
-                sops-nix.homeManagerModules.sops
-              ];
+              #   home-manager.sharedModules = [
+              #     sops-nix.homeManagerModules.sops
+              #   ];
             }
             stylix.nixosModules.stylix
+            sops-nix.nixosModules.sops
           ];
         };
     in
