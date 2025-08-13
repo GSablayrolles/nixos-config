@@ -12,7 +12,7 @@
   services.glances.enable = true;
   services.homepage-dashboard = {
     enable = true;
-    environmentFile = builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=ferret.party";
+    environmentFile = builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=ferrets-home.party";
 
     # customCSS = ''
     #   body, html {
@@ -133,7 +133,7 @@
         Services = [
           {
             Microbin = {
-              href = "http://localhost:8069";
+              href = "https://mc.ferrets-home.party";
               description = "Minimalist copy/paste service";
               icon = "microbin.png";
             };

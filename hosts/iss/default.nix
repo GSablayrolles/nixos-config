@@ -59,20 +59,17 @@
   };
 
   networking = {
-    domain = "ferret.party";
-    search = [ "ferret.party" ];
+    domain = "ferrets-home.party";
+    search = [ "ferrets-home.party" ];
 
     extraHosts = ''
       192.168.1.134 atlantis
-      192.168.1.46 ferret.party
+      192.168.1.46 ferrets-home.party mc.ferrets-home.party
     '';
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [
-        80
-        443
-      ];
+
       allowedUDPPorts = [ 53 ];
     };
   };
