@@ -7,6 +7,7 @@
   imports = [
     ./microbin.nix
     ./caddy.nix
+    ./stirling-pdf.nix
   ];
 
   services.glances.enable = true;
