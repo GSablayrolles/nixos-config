@@ -8,6 +8,7 @@
     ./microbin.nix
     ./caddy.nix
     ./stirling-pdf.nix
+    ./blocky.nix
   ];
 
   services.glances.enable = true;
@@ -137,6 +138,13 @@
               href = "https://mc.ferrets-home.party";
               description = "Minimalist copy/paste service";
               icon = "microbin.png";
+            };
+          }
+          {
+            "Stirling-pdf" = {
+              href = "https://spdf.ferrets-home.party";
+              description = "PDF operations service";
+              icon = "stirling-pdf.png";
             };
           }
         ];
