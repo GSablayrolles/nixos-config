@@ -34,22 +34,6 @@ in
         '';
       };
 
-      "${baseDomain}" = {
-        useACMEHost = baseDomain;
-
-        extraConfig = ''
-          reverse_proxy http://localhost:8082
-        '';
-      };
-
-      "mc.${baseDomain}" = {
-        useACMEHost = baseDomain;
-
-        extraConfig = ''
-          reverse_proxy http://127.0.0.1:8069
-        '';
-      };
-
       "localhost".extraConfig = ''
         respond "OK"
       '';

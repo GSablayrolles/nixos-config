@@ -127,4 +127,12 @@ in
       }
     ];
   };
+
+  services.caddy.virtualHosts."${baseDomain}" = {
+    useACMEHost = baseDomain;
+
+    extraConfig = ''
+      reverse_proxy http://localhost:8082
+    '';
+  };
 }

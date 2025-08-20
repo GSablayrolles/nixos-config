@@ -1,10 +1,10 @@
 {
-  inputs,
-  lib,
   config,
-  pkgs,
   ...
 }:
+let
+  baseDomain = config.homelab.baseDomain;
+in
 {
   services.microbin = {
     enable = true;
@@ -19,5 +19,13 @@
       MICROBIN_HIDE_HEADER = true;
       MICROBIN_HIDE_FOOTER = true;
     };
+  };
+
+  services.caddy.virtualHosts."mc.${baseDomain}" = {
+    useACMEHost = baseDomain;
+
+    extraConfig = ''
+      reverse_proxy http://${config.services.microbin.settings.MICROBIN_BIND}:${toString config.services.microbin.settings.MICROBIN_PORT}
+    '';
   };
 }
