@@ -9,6 +9,7 @@
     ./caddy.nix
     ./stirling-pdf.nix
     ./blocky.nix
+    # ./immich.nix
   ];
 
   services.glances.enable = true;
@@ -145,6 +146,13 @@
               href = "https://spdf.ferrets-home.party";
               description = "PDF operations service";
               icon = "stirling-pdf.png";
+            };
+          }
+          {
+            Immich = {
+              href = "https://photos.ferrets-home.party";
+              description = "Self hosting alternative to Google Photos";
+              icon = "immich.svg";
             };
           }
         ];
