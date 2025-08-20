@@ -19,7 +19,6 @@ in
         filterUnmappedTypes = true;
         mapping = {
           "${baseDomain}" = "192.168.1.46";
-          "spdf.${baseDomain}" = "192.168.1.46";
         };
       };
     };

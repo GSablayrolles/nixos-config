@@ -64,7 +64,6 @@
 
     extraHosts = ''
       192.168.1.134 atlantis
-      192.168.1.46 ferrets-home.party mc.ferrets-home.party
     '';
 
     firewall = {
