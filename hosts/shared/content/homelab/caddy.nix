@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 let
   baseDomain = config.homelab.baseDomain;
 in

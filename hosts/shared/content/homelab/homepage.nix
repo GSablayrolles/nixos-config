@@ -43,6 +43,12 @@ in
           cache = 10;
         };
       }
+      {
+        greeting = {
+          textSize = "2xl";
+          text = "Ferrets Lover";
+        };
+      }
     ];
 
     services = [
@@ -123,6 +129,58 @@ in
           #       icon = "immich.svg";
           #     };
           #   }
+        ];
+      }
+    ];
+
+    bookmarks = [
+      {
+        Personnal = [
+          {
+            Github = [
+              {
+                abbr = "GH";
+                icon = "github.svg";
+                href = "https://github.com/GSablayrolles";
+                description = "My GitHub";
+              }
+            ];
+          }
+          {
+            ProntMail = [
+              {
+                abbr = "PM";
+                icon = "proton-mail.svg";
+                href = "https://mail.proton.me/u/2/inbox";
+              }
+            ];
+          }
+        ];
+      }
+      {
+        Entertainment = [
+          {
+            YouTube = [
+              {
+                abbr = "YT";
+                icon = "youtube.svg";
+                href = "https://youtube.com/";
+              }
+            ];
+          }
+        ];
+      }
+      {
+        Ferrets = [
+          {
+            CFAF = [
+              {
+                abbr = "CF";
+                icon = "otter-wiki.svg";
+                href = "https://club-furet.fr/";
+              }
+            ];
+          }
         ];
       }
     ];
