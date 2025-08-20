@@ -15,7 +15,23 @@
     ../shared/content/homelab
 
   ];
-  networking.hostName = "iss";
+
+  networking = {
+    hostName = "iss";
+
+    domain = "ferrets-home.party";
+    search = [ "ferrets-home.party" ];
+
+    extraHosts = ''
+      192.168.1.134 atlantis
+    '';
+
+    firewall = {
+      enable = true;
+
+      allowedUDPPorts = [ 53 ];
+    };
+  };
 
   services = {
     displayManager.sddm = {
@@ -56,21 +72,6 @@
     # });
 
     package = config.boot.kernelPackages.nvidiaPackages.production;
-  };
-
-  networking = {
-    domain = "ferrets-home.party";
-    search = [ "ferrets-home.party" ];
-
-    extraHosts = ''
-      192.168.1.134 atlantis
-    '';
-
-    firewall = {
-      enable = true;
-
-      allowedUDPPorts = [ 53 ];
-    };
   };
 
   ## XDG Portals

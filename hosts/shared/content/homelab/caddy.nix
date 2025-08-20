@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  baseDomain = "ferrets-home.party";
+  baseDomain = config.homelab.baseDomain;
 in
 
 {
