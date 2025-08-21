@@ -112,14 +112,21 @@ in
             Microbin = {
               href = "https://mc.${baseDomain}";
               description = "Minimalist copy/paste service";
-              icon = "microbin.png";
+              icon = "microbin.webp";
             };
           }
           {
             "Stirling-pdf" = {
               href = "https://spdf.${baseDomain}";
               description = "PDF operations service";
-              icon = "stirling-pdf.png";
+              icon = "stirling-pdf.svg";
+            };
+          }
+          {
+            Miniflux = {
+              href = "https://news.${baseDomain}";
+              description = "Personnal RSS feed";
+              icon = "miniflux-light.svg";
             };
           }
           #   {
@@ -147,7 +154,7 @@ in
             ];
           }
           {
-            ProntMail = [
+            ProtonMail = [
               {
                 abbr = "PM";
                 icon = "proton-mail.svg";

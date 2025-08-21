@@ -12,6 +12,7 @@ in
     ./stirling-pdf.nix
     ./blocky.nix
     ./homepage.nix
+    ./miniflux.nix
     # ./immich.nix
   ];
 
