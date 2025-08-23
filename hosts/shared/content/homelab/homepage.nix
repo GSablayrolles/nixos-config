@@ -19,14 +19,37 @@ in
           };
         }
         {
-          Services = {
-            header = true;
+          Utilities = {
+            header = false;
             style = "row";
+            columns = 2;
+
+            Calendar = {
+              header = false;
+
+            };
+
+            Services = {
+              header = true;
+              style = "row";
+              columns = 3;
+            };
           };
+
         }
+
       ];
       headerStyle = "boxed";
       hideVersion = true;
+
+      background = {
+        image = " https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
+        blur = "sm"; # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
+        saturate = 50; # 0, 50, 100... see https=//tailwindcss.com/docs/backdrop-saturate
+        brightness = 50; # 0, 50, 75... see https=//tailwindcss.com/docs/backdrop-brightness
+        opacity = 50; # 0-100};
+      };
+      cardBlur = "xs"; # xs, md, etc... see https://tailwindcss.com/docs/backdrop-blur
 
       color = "slate";
       theme = "dark";
@@ -52,6 +75,7 @@ in
     ];
 
     services = [
+
       {
         # Group
         Glances =
@@ -107,35 +131,53 @@ in
           ];
       }
       {
-        Services = [
+        Utilities = [
           {
-            Microbin = {
-              href = "https://mc.${baseDomain}";
-              description = "Minimalist copy/paste service";
-              icon = "microbin.webp";
-            };
+            Calendar = [
+              {
+                "Our Calendar" = {
+                  widget = {
+                    type = "calendar";
+                    view = "monthly"; # optional - possible values monthly, agenda
+                    maxEvents = 10; # optional - defaults to 10
+                    showTime = true; # optional - show time for event happening today - defaults to false
+                  };
+                };
+              }
+            ];
           }
           {
-            "Stirling-pdf" = {
-              href = "https://spdf.${baseDomain}";
-              description = "PDF operations service";
-              icon = "stirling-pdf.svg";
-            };
+            Services = [
+              {
+                Microbin = {
+                  href = "https://mc.${baseDomain}";
+                  description = "Minimalist copy/paste service";
+                  icon = "microbin.webp";
+                };
+              }
+              {
+                "Stirling-pdf" = {
+                  href = "https://spdf.${baseDomain}";
+                  description = "PDF operations service";
+                  icon = "stirling-pdf.svg";
+                };
+              }
+              {
+                Miniflux = {
+                  href = "https://news.${baseDomain}";
+                  description = "Personnal RSS feed";
+                  icon = "miniflux-light.svg";
+                };
+              }
+              #   {
+              #     Immich = {
+              #       href = "https://photos.${baseDomain}";
+              #       description = "Self hosting alternative to Google Photos";
+              #       icon = "immich.svg";
+              #     };
+              #   }
+            ];
           }
-          {
-            Miniflux = {
-              href = "https://news.${baseDomain}";
-              description = "Personnal RSS feed";
-              icon = "miniflux-light.svg";
-            };
-          }
-          #   {
-          #     Immich = {
-          #       href = "https://photos.${baseDomain}";
-          #       description = "Self hosting alternative to Google Photos";
-          #       icon = "immich.svg";
-          #     };
-          #   }
         ];
       }
     ];
