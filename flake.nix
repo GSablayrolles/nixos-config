@@ -22,6 +22,8 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
@@ -31,6 +33,7 @@
       home-manager,
       stylix,
       sops-nix,
+      nix-minecraft,
       ...
     }:
     let
