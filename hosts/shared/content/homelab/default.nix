@@ -13,6 +13,7 @@ in
     ./blocky.nix
     ./homepage.nix
     ./miniflux.nix
+    ./minecraft.nix
     # ./immich.nix
   ];
 

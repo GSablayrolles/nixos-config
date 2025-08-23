@@ -178,6 +178,20 @@ in
               #   }
             ];
           }
+          {
+            Monitor = [
+
+              {
+                Minecraft = {
+                  widget = {
+                    type = "minecraft";
+                    url = "udp://127.0.0.1:25565";
+                  };
+                };
+              }
+            ];
+
+          }
         ];
       }
     ];
