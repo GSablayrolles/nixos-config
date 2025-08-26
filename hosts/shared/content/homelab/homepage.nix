@@ -53,6 +53,8 @@ in
 
       color = "slate";
       theme = "dark";
+
+      statusStyle = "dot";
     };
 
     widgets = [
@@ -153,6 +155,8 @@ in
                   href = "https://mc.${baseDomain}";
                   description = "Minimalist copy/paste service";
                   icon = "microbin.webp";
+                  siteMonitor = "https://mc.${baseDomain}";
+
                 };
               }
               {
@@ -160,6 +164,8 @@ in
                   href = "https://spdf.${baseDomain}";
                   description = "PDF operations service";
                   icon = "stirling-pdf.svg";
+                  siteMonitor = "https://spdf.${baseDomain}";
+
                 };
               }
               {
@@ -167,6 +173,8 @@ in
                   href = "https://news.${baseDomain}";
                   description = "Personnal RSS feed";
                   icon = "miniflux-light.svg";
+                  siteMonitor = "https://news.${baseDomain}";
+
                 };
               }
               #   {
