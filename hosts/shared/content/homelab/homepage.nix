@@ -35,12 +35,8 @@ in
               columns = 3;
             };
           };
-
         }
-
       ];
-      headerStyle = "boxed";
-      hideVersion = true;
 
       background = {
         image = " https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
@@ -54,10 +50,27 @@ in
       color = "slate";
       theme = "dark";
 
+      headerStyle = "boxed";
+      hideVersion = true;
+
       statusStyle = "dot";
     };
 
     widgets = [
+      {
+        greeting = {
+          textSize = "2xl";
+          text = "Ferrets Lover";
+        };
+      }
+      {
+        search = {
+          provider = "brave";
+          focus = false;
+          showSearchSuggestions = true;
+
+        };
+      }
       {
         openmeteo = {
           label = "Toulouse";
@@ -66,12 +79,6 @@ in
           timezone = "Europe/Paris";
           units = "metric";
           cache = 10;
-        };
-      }
-      {
-        greeting = {
-          textSize = "2xl";
-          text = "Ferrets Lover";
         };
       }
     ];
