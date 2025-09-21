@@ -7,7 +7,7 @@
 {
   stylix = {
     enable = true;
-    image = ./red_mountains.png;
+    image = ./green_wp.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
