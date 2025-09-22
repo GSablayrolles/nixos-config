@@ -18,8 +18,10 @@ in
   ];
 
   options.homelab = {
+    enable = lib.mkEnableOption "The homelab services and configuration variables";
+
     baseDomain = mkOption {
-      default = "ferrets-home.party";
+      default = "";
       type = lib.types.string;
       description = ''
         Base domain for the homelab
