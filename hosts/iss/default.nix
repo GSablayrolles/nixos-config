@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
+    ./homelab.nix
     ../shared/users/guillaume
     ../shared/global
     ../shared/content/stylix.nix
@@ -62,14 +63,6 @@
     modesetting.enable = true;
     open = true;
     nvidiaSettings = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old: let
-    #   version = "535.129.03";
-    # in {
-    #   src = pkgs.fetchurl {
-    #     url = "https://download.nvidia.com/XFree86/Linux-x86_64/${version}/NVIDIA-Linux-x86_64-${version}.run";
-    #     sha256 = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
-    #   };
-    # });
 
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };

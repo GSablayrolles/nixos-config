@@ -1,23 +1,36 @@
 {
   config,
+  lib,
   ...
 }:
 let
-  baseDomain = config.homelab.baseDomain;
+  inherit (lib) mkEnableOption mkIf;
+
+  service = "stirling-pdf";
+  cfg = config.homelab.services.stirling-pdf;
+  homelab = config.homelab;
 in
 {
-  services.stirling-pdf = {
-    enable = true;
-    environment = {
-      SERVER_PORT = 8060;
+  options.homelab.services.${service} = {
+    enable = mkEnableOption {
+      description = "Enable ${service}";
     };
   };
 
-  services.caddy.virtualHosts."spdf.${baseDomain}" = {
-    useACMEHost = baseDomain;
+  config = mkIf cfg.enable {
+    services.stirling-pdf = {
+      enable = true;
+      environment = {
+        SERVER_PORT = 8060;
+      };
+    };
 
-    extraConfig = ''
-      reverse_proxy http://127.0.0.1:8060
-    '';
+    services.caddy.virtualHosts."spdf.${homelab.baseDomain}" = {
+      useACMEHost = homelab.baseDomain;
+
+      extraConfig = ''
+        reverse_proxy http://127.0.0.1:8060
+      '';
+    };
   };
 }
