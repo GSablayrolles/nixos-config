@@ -22,7 +22,7 @@ in
 
     baseDomain = mkOption {
       default = "";
-      type = lib.types.string;
+      type = lib.types.str;
       description = ''
         Base domain for the homelab
       '';
