@@ -24,6 +24,12 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    poetry2nix.url = "github:nix-community/poetry2nix";
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.poetry2nix.follows = "poetry2nix";
+    };
   };
 
   outputs =
@@ -33,7 +39,7 @@
       home-manager,
       stylix,
       sops-nix,
-      nix-minecraft,
+      authentik-nix,
       ...
     }:
     let
@@ -60,6 +66,7 @@
             }
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
+            authentik-nix.nixosModules.default
           ];
         };
     in

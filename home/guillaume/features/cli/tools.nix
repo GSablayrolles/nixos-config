@@ -20,6 +20,7 @@ in
       bat
       wget
       discord
+      sops
     ]
   );
 

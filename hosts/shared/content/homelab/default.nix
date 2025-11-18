@@ -14,6 +14,7 @@ in
     ./homepage.nix
     ./miniflux.nix
     ./minecraft.nix
+    ./authentik.nix
     # ./immich.nix
   ];
 

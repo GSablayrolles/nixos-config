@@ -194,6 +194,15 @@ in
 
                   };
                 }
+                {
+                  Authentik = {
+                    href = "https://login.${homelab.baseDomain}";
+                    description = "Authentification and identity management";
+                    icon = "authentik.svg";
+                    siteMonitor = "https://login.${homelab.baseDomain}";
+
+                  };
+                }
                 #   {
                 #     Immich = {
                 #       href = "https://photos.${homelab.baseDomain}";
