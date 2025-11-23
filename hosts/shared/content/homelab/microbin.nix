@@ -37,7 +37,19 @@ in
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''
-        reverse_proxy http://${config.services.microbin.settings.MICROBIN_BIND}:${toString config.services.microbin.settings.MICROBIN_PORT}
+        route {
+            reverse_proxy /outpost.goauthentik.io/* http://outpost.${homelab.baseDomain}:9000
+
+            forward_auth http://outpost.${homelab.baseDomain}:9000 {
+                uri /outpost.goauthentik.io/auth/caddy
+
+                copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+
+                trusted_proxies private_ranges
+            }
+            
+          reverse_proxy http://${config.services.microbin.settings.MICROBIN_BIND}:${toString config.services.microbin.settings.MICROBIN_PORT}
+        }
       '';
     };
   };
