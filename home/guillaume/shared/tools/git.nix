@@ -4,9 +4,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "Guillaume Sablayrolles";
-    userEmail = "g.sablayrolles@proton.me";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Guillaume Sablayrolles";
+        email = "g.sablayrolles@proton.me";
+      };
       credential.helper = "store";
     };
   };
