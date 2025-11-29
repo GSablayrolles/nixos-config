@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf;
 
   service = "stirling-pdf";
   cfg = config.homelab.services.stirling-pdf;
@@ -14,6 +14,12 @@ in
   options.homelab.services.${service} = {
     enable = mkEnableOption {
       description = "Enable ${service}";
+    };
+
+    domain = mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "The domain for ${service}";
     };
   };
 
@@ -25,7 +31,7 @@ in
       };
     };
 
-    services.caddy.virtualHosts."spdf.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''

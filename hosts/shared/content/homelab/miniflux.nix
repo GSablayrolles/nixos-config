@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf;
 
   service = "miniflux";
   cfg = config.homelab.services.miniflux;
@@ -10,6 +10,12 @@ in
   options.homelab.services.${service} = {
     enable = mkEnableOption {
       description = "Enable ${service}";
+    };
+
+    domain = mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "The domain for ${service}";
     };
   };
 
@@ -22,13 +28,13 @@ in
       enable = true;
       adminCredentialsFile = config.sops.secrets.miniflux-creds.path;
       config = {
-        BASE_URL = "https://news.${homelab.baseDomain}";
+        BASE_URL = "https://${cfg.domain}.${homelab.baseDomain}";
         CREATE_ADMIN = 1;
         LISTEN_ADDR = "127.0.0.1:8070";
       };
     };
 
-    services.caddy.virtualHosts."news.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''

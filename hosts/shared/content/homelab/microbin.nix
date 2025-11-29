@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf;
 
   service = "microbin";
   cfg = config.homelab.services.microbin;
@@ -15,6 +15,12 @@ in
     enable = mkEnableOption {
       description = "Enable ${service}";
     };
+
+    domain = mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "The domain for ${service}";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -23,17 +29,17 @@ in
       settings = {
         MICROBIN_WIDE = true;
         MICROBIN_MAX_FILE_SIZE_UNENCRYPTED_MB = 2048;
-        #   MICROBIN_PUBLIC_PATH = "https://${cfg.url}/";
         MICROBIN_BIND = "127.0.0.1";
         MICROBIN_PORT = 8069;
         MICROBIN_HIDE_LOGO = true;
         MICROBIN_HIGHLIGHTSYNTAX = true;
         MICROBIN_HIDE_HEADER = true;
         MICROBIN_HIDE_FOOTER = true;
+        MICROBIN_DISABLE_TELEMETRY = true;
       };
     };
 
-    services.caddy.virtualHosts."mc.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''
