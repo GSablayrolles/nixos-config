@@ -23,7 +23,7 @@
       };
 
       immich = {
-        enable = true;
+        enable = false;
         domain = "photos";
       };
     };
