@@ -8,11 +8,28 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./sops.nix
     ../shared/users/guillaume
     ../shared/global
     ../shared/content/stylix.nix
   ];
-  networking.hostName = "atlantis";
+
+  networking = {
+    hostName = "atlantis";
+
+    domain = "ferret.party";
+    search = [ "ferret.party" ];
+
+    extraHosts = ''
+      192.168.1.154 iss
+    '';
+
+    firewall = {
+      enable = true;
+
+    };
+  };
+
   services = {
     displayManager.sddm = {
       enable = true;
@@ -23,6 +40,13 @@
       xkb.layout = "fr";
     };
   };
+
+  virtualisation = {
+    docker.enable = true;
+    podman.enable = true;
+  };
+
+  users.users.guillaume.extraGroups = [ "docker" ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -42,30 +66,8 @@
     modesetting.enable = true;
     open = true;
     nvidiaSettings = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old: let
-    #   version = "535.129.03";
-    # in {
-    #   src = pkgs.fetchurl {
-    #     url = "https://download.nvidia.com/XFree86/Linux-x86_64/${version}/NVIDIA-Linux-x86_64-${version}.run";
-    #     sha256 = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
-    #   };
-    # });
 
     package = config.boot.kernelPackages.nvidiaPackages.production;
-  };
-
-  networking = {
-    domain = "ferret.party";
-    search = [ "ferret.party" ];
-
-    extraHosts = ''
-      192.168.1.154 iss
-    '';
-
-    firewall = {
-      enable = true;
-
-    };
   };
 
   ## XDG Portals
