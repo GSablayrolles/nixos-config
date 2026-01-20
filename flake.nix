@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +26,12 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-    poetry2nix.url = "github:nix-community/poetry2nix";
     authentik-nix = {
       url = "github:nix-community/authentik-nix";
-      inputs.poetry2nix.follows = "poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.authentik-src.url = "github:goauthentik/authentik/version-2025.10";
     };
+
   };
 
   outputs =

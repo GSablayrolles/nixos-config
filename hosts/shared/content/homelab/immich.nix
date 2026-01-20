@@ -38,7 +38,8 @@ in
       enable = cfg.enable;
       port = 2283;
       #   mediaLocation = "/home/guillaume/Services/Immich";
-
+      machine-learning.enable = false;
+      openFirewall = true;
     };
 
     services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {

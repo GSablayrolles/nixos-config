@@ -1,5 +1,7 @@
 {
   config,
+  pkgs,
+  inputs,
   ...
 }:
 let
@@ -11,15 +13,34 @@ in
     sopsFile = ../../secrets.yaml;
   };
 
-  services.authentik = {
-    enable = true;
-    environmentFile = config.sops.secrets.authentik-env.path;
+  services.authentik =
+    let
+      customAuthentikScope = inputs.authentik-nix.lib.mkAuthentikScope {
+        inherit pkgs;
+      };
 
-    settings = {
-      disable_startup_analytics = true;
-      avatars = "initials";
+      # Override the scope to change gopkgs
+      overriddenScope = customAuthentikScope.overrideScope (
+        final: prev: {
+          authentikComponents = prev.authentikComponents // {
+            gopkgs = prev.authentikComponents.gopkgs.override {
+              buildGo124Module = pkgs.buildGo125Module;
+            };
+          };
+        }
+      );
+    in
+    {
+      enable = true;
+      environmentFile = config.sops.secrets.authentik-env.path;
+
+      inherit (overriddenScope) authentikComponents;
+
+      settings = {
+        disable_startup_analytics = true;
+        avatars = "initials";
+      };
     };
-  };
 
   services.caddy.virtualHosts."login.${baseDomain}" = {
     useACMEHost = baseDomain;
