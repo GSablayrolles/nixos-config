@@ -203,13 +203,14 @@ in
 
                   };
                 }
-                #   {
-                #     Immich = {
-                #       href = "https://photos.${homelab.baseDomain}";
-                #       description = "Self hosting alternative to Google Photos";
-                #       icon = "immich.svg";
-                #     };
-                #   }
+                {
+                  Immich = {
+                    href = "https://photos.${homelab.baseDomain}";
+                    description = "Self hosting alternative to Google Photos";
+                    icon = "immich.svg";
+                    siteMonitor = "https://photos.${homelab.baseDomain}";
+                  };
+                }
               ];
             }
             {
