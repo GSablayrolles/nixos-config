@@ -16,6 +16,7 @@ in
     ./minecraft.nix
     ./authentik.nix
     ./immich.nix
+    ./arr
   ];
 
   options.homelab = {

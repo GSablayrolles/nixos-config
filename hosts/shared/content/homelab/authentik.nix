@@ -14,27 +14,27 @@ in
   };
 
   services.authentik =
-    let
-      customAuthentikScope = inputs.authentik-nix.lib.mkAuthentikScope {
-        inherit pkgs;
-      };
+    # let
+    #   customAuthentikScope = inputs.authentik-nix.lib.mkAuthentikScope {
+    #     inherit pkgs;
+    #   };
 
-      # Override the scope to change gopkgs
-      overriddenScope = customAuthentikScope.overrideScope (
-        final: prev: {
-          authentikComponents = prev.authentikComponents // {
-            gopkgs = prev.authentikComponents.gopkgs.override {
-              buildGo124Module = pkgs.buildGo125Module;
-            };
-          };
-        }
-      );
-    in
+    #   # Override the scope to change gopkgs
+    #   overriddenScope = customAuthentikScope.overrideScope (
+    #     final: prev: {
+    #       authentikComponents = prev.authentikComponents // {
+    #         gopkgs = prev.authentikComponents.gopkgs.override {
+    #           buildGo124Module = pkgs.buildGo125Module;
+    #         };
+    #       };
+    #     }
+    #   );
+    # in
     {
       enable = true;
       environmentFile = config.sops.secrets.authentik-env.path;
 
-      inherit (overriddenScope) authentikComponents;
+      #   inherit (overriddenScope) authentikComponents;
 
       settings = {
         disable_startup_analytics = true;

@@ -29,8 +29,10 @@
     authentik-nix = {
       url = "github:nix-community/authentik-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.authentik-src.url = "github:goauthentik/authentik/version-2025.10";
+      #   inputs.authentik-src.url = "github:goauthentik/authentik/version-2025.10";
     };
+
+    nixarr.url = "github:rasmus-kirk/nixarr";
 
   };
 
@@ -42,6 +44,7 @@
       stylix,
       sops-nix,
       authentik-nix,
+      nixarr,
       ...
     }:
     let
@@ -69,6 +72,7 @@
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
             authentik-nix.nixosModules.default
+            nixarr.nixosModules.default
           ];
         };
     in

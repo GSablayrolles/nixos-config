@@ -26,6 +26,20 @@
         enable = true;
         domain = "photos";
       };
+
+      nixarr = {
+        enable = true;
+
+        bazarr.enable = true;
+        prowlarr.enable = true;
+        radarr.enable = true;
+        sonarr.enable = true;
+        recyclarr.enable = false;
+
+        jellyfin.enable = true;
+        jellyseerr.enable = true;
+
+      };
     };
   };
 }
