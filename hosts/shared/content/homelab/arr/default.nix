@@ -61,6 +61,17 @@ in
       };
     };
 
+    sabnzbd = {
+      enable = mkEnableOption {
+        description = "Enable SABnzbd";
+      };
+
+      port = mkOption {
+        description = "Port for SABnzbd";
+        default = 6336;
+      };
+    };
+
     recyclarr = {
       enable = mkEnableOption {
         description = "Enable Recyclarr";
@@ -116,6 +127,11 @@ in
       sonarr = {
         enable = cfg.sonarr.enable;
         port = cfg.sonarr.port;
+      };
+
+      sabnzbd = {
+        enable = cfg.sabnzbd.enable;
+        guiPort = cfg.sabnzbd.port;
       };
 
       recyclarr.enable = cfg.recyclarr.enable;

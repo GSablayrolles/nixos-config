@@ -34,6 +34,9 @@
         prowlarr.enable = true;
         radarr.enable = true;
         sonarr.enable = true;
+
+        sabnzbd.enable = true;
+
         recyclarr.enable = false;
 
         jellyfin.enable = true;
