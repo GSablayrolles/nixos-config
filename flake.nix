@@ -29,7 +29,6 @@
     authentik-nix = {
       url = "github:nix-community/authentik-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.authentik-src.url = "github:goauthentik/authentik/version-2025.10";
     };
 
     nixarr.url = "github:rasmus-kirk/nixarr";
@@ -65,9 +64,6 @@
               home-manager.extraSpecialArgs = {
                 inherit (self) inputs outputs;
               };
-              #   home-manager.sharedModules = [
-              #     sops-nix.homeManagerModules.sops
-              #   ];
             }
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops

@@ -18,7 +18,7 @@
       };
 
       stirling-pdf = {
-        enable = true;
+        enable = false;
         domain = "spdf";
       };
 

@@ -1,0 +1,6 @@
+{ ... }:
+{
+  imports = [
+    ./stirling-pdf.nix
+  ];
+}

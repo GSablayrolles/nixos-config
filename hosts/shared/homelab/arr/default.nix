@@ -8,7 +8,6 @@ let
 
   service = "nixarr";
   cfg = config.homelab.services.nixarr;
-  homelab = config.homelab;
 in
 {
 

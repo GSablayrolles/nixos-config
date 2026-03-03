@@ -49,7 +49,7 @@ in
         ];
 
         background = {
-          image = ./homepage_bg.avif;
+          image = ./neon_mountains.jpg;
           blur = "sm"; # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
           saturate = 50; # 0, 50, 100... see https=//tailwindcss.com/docs/backdrop-saturate
           brightness = 50; # 0, 50, 75... see https=//tailwindcss.com/docs/backdrop-brightness

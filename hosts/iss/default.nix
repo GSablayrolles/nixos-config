@@ -8,12 +8,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./sops.nix
     ./homelab.nix
-    ../shared/users/guillaume
-    ../shared/global
     ../shared/content/stylix.nix
-    ../shared/content/homelab
+    ../shared/global
+    ../shared/homelab
+    ../shared/users/guillaume
+    ./sops.nix
 
   ];
 

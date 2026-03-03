@@ -9,6 +9,7 @@ let
   service = "stirling-pdf";
   cfg = config.homelab.services.stirling-pdf;
   homelab = config.homelab;
+
 in
 {
   options.homelab.services.${service} = {
@@ -24,6 +25,7 @@ in
   };
 
   config = mkIf cfg.enable {
+
     services.stirling-pdf = {
       enable = true;
       environment = {
