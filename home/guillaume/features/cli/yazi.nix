@@ -10,6 +10,8 @@ in
     inherit enable;
     enableFishIntegration = true;
 
+    shellWrapperName = "y";
+
     settings = {
       mgr = {
         sort_by = "natural";

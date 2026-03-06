@@ -136,5 +136,6 @@ in
       recyclarr.enable = cfg.recyclarr.enable;
 
     };
+    services.sabnzbd.allowConfigWrite = true;
   };
 }

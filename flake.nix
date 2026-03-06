@@ -74,7 +74,7 @@
     in
     {
       nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-      formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
+      formatter = forEachPkgs (pkgs: pkgs.nixfmt);
 
       nixosConfigurations = {
         curiosity = mkNixos "guillaume" "curiosity" "x86_64-linux";

@@ -14,7 +14,7 @@ in
     with pkgs;
     [
       pfetch
-      neofetch
+      fastfetch
       pipes
       obsidian
       bat

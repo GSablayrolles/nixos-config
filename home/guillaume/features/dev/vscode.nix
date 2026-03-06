@@ -93,11 +93,11 @@ in
       userSettings.git.confirmSync = false;
 
       # Nix IDE
-      userSettings.nix-ide.formatterPath = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+      userSettings.nix-ide.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
       userSettings.nix.enableLanguageServer = true;
       userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-      userSettings.nix.formatterPath = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-      userSettings.nix.serverSettings.nil.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+      userSettings.nix.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
+      userSettings.nix.serverSettings.nil.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
     };
   };
 

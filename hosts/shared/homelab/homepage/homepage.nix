@@ -17,7 +17,9 @@ in
     services.glances.enable = true;
     services.homepage-dashboard = {
       enable = true;
-      environmentFile = builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=${homelab.baseDomain}";
+      environmentFiles = [
+        (builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=${homelab.baseDomain}")
+      ];
 
       settings = {
         layout = [
