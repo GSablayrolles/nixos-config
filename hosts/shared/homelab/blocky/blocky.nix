@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   ...
 }:
 let
@@ -9,12 +10,14 @@ in
   services.blocky = {
     enable = true;
     settings = {
+
       ports.dns = 53;
       upstreams.groups.default = [ "1.1.1.1" ];
       bootstrapDns = {
         upstream = "1.1.1.1";
         ips = [ "1.1.1.1" ];
       };
+
       customDNS = {
         customTTL = "1h";
         filterUnmappedTypes = true;
@@ -22,9 +25,17 @@ in
           "${baseDomain}" = "192.168.1.46";
         };
       };
+      blocking = {
+        blackLists = {
+          #Adblocking
+          ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ];
+          #Another filter for blocking adult sites
+          adult = [ "https://blocklistproject.github.io/Lists/porn.txt" ];
+        };
+      };
     };
   };
 
   networking.nameservers = [ "192.168.1.46" ];
-  networking.networkmanager.dns = "none";
+  networking.networkmanager.dns = lib.mkForce "none";
 }

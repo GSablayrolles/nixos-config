@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./homelab.nix
+    ./network.nix
     ../shared/content/stylix.nix
     ../shared/global
     ../shared/homelab
@@ -16,23 +17,6 @@
     ./sops.nix
 
   ];
-
-  networking = {
-    hostName = "iss";
-
-    domain = "ferrets-home.party";
-    search = [ "ferrets-home.party" ];
-
-    extraHosts = ''
-      192.168.1.134 atlantis
-    '';
-
-    firewall = {
-      enable = true;
-
-      allowedUDPPorts = [ 53 ];
-    };
-  };
 
   services = {
     displayManager.sddm = {
