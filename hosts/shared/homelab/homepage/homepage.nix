@@ -252,6 +252,7 @@ in
                   abbr = "PM";
                   icon = "proton-mail.svg";
                   href = "https://mail.proton.me/u/2/inbox";
+                  description = "My ProtonMail";
                 }
               ];
             }

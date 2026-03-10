@@ -25,7 +25,6 @@
           }
         ];
       };
-      wlp2s0.useDHCP = false;
     };
 
     firewall = {

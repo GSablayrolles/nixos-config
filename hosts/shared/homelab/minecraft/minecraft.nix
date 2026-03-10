@@ -41,6 +41,7 @@ in
           difficulty = "normal";
           online-mode = true;
           op-permission-level = 2;
+          white-list = true;
 
           #server-port = 25565;
         };
