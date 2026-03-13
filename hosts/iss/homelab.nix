@@ -18,7 +18,7 @@
       };
 
       stirling-pdf = {
-        enable = false;
+        enable = true;
         domain = "spdf";
       };
 
@@ -36,8 +36,6 @@
         sonarr.enable = true;
 
         sabnzbd.enable = true;
-
-        recyclarr.enable = false;
 
         jellyfin.enable = true;
         jellyseerr.enable = true;
