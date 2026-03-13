@@ -3,8 +3,9 @@ let
   inherit (lib) mkEnableOption mkIf;
 
   service = "homepage-dashboard";
-  cfg = config.homelab.services.homepage;
   homelab = config.homelab;
+  homepage = config.homelab.services.homepage;
+  nixarr = config.homelab.services.nixarr;
 in
 {
   options.homelab.services.homepage = {
@@ -13,7 +14,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf homepage.enable {
     services.glances.enable = true;
     services.homepage-dashboard = {
       enable = true;
@@ -31,33 +32,35 @@ in
             };
           }
           {
-            Utilities = {
-              header = false;
+            Services = {
+              header = true;
+              style = "row";
+              columns = 4;
+            };
+          }
+          {
+            Downloads = {
               style = "row";
               columns = 2;
 
               Calendar = {
                 header = false;
-
               };
 
-              Services = {
-                header = true;
-                style = "row";
-                columns = 3;
+              Arrs = {
+                header = false;
               };
             };
           }
         ];
 
         background = {
-          image = ./neon_mountains.jpg;
-          blur = "sm"; # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
-          saturate = 50; # 0, 50, 100... see https=//tailwindcss.com/docs/backdrop-saturate
-          brightness = 50; # 0, 50, 75... see https=//tailwindcss.com/docs/backdrop-brightness
-          opacity = 50; # 0-100};
+          image = "https://server.wallpaperalchemy.com/storage/wallpapers/91/4k-black-hole-minimalistic-wallpaper.png";
+          blur = "md";
+          saturate = 80;
+          brightness = 50;
+          opacity = 30;
         };
-        cardBlur = "xs"; # xs, md, etc... see https://tailwindcss.com/docs/backdrop-blur
 
         color = "slate";
         theme = "dark";
@@ -73,6 +76,16 @@ in
           greeting = {
             textSize = "2xl";
             text = "Ferrets Lover";
+          };
+        }
+        {
+          datetime = {
+            textSize = "2xl";
+            format = {
+              timeStyle = "short";
+              hourCycle = "h24";
+              timeZone = "Europe/Paris";
+            };
           };
         }
         {
@@ -98,7 +111,6 @@ in
       services = [
 
         {
-          # Group
           Glances =
             let
               port = toString config.services.glances.port;
@@ -152,7 +164,73 @@ in
             ];
         }
         {
-          Utilities = [
+          Services = [
+            {
+              Microbin = {
+                href = "https://mc.${homelab.baseDomain}";
+                description = "Minimalist copy/paste service";
+                icon = "microbin.webp";
+                siteMonitor = "https://mc.${homelab.baseDomain}";
+
+              };
+            }
+            {
+              "Stirling-pdf" = {
+                href = "https://spdf.${homelab.baseDomain}";
+                description = "PDF operations service";
+                icon = "stirling-pdf.svg";
+                siteMonitor = "https://spdf.${homelab.baseDomain}";
+
+              };
+            }
+            {
+              Miniflux = {
+                href = "https://news.${homelab.baseDomain}";
+                description = "Personnal RSS feed";
+                icon = "miniflux-light.svg";
+                siteMonitor = "https://news.${homelab.baseDomain}";
+
+              };
+            }
+            {
+              Authentik = {
+                href = "https://login.${homelab.baseDomain}";
+                description = "Authentification and identity management";
+                icon = "authentik.svg";
+                siteMonitor = "https://login.${homelab.baseDomain}";
+
+              };
+            }
+            {
+              Immich = {
+                href = "https://photos.${homelab.baseDomain}";
+                description = "Self hosting alternative to Google Photos";
+                icon = "immich.svg";
+                siteMonitor = "https://photos.${homelab.baseDomain}";
+              };
+            }
+            {
+              Jellyfin = {
+                href = "https://${nixarr.jellyfin.url}";
+                description = "Our media library";
+                icon = "jellyfin.webp";
+                siteMonitor = "https://${nixarr.jellyfin.url}";
+
+              };
+            }
+            {
+              Jellyseerr = {
+                href = "https://${nixarr.jellyseerr.url}";
+                description = "Movies/Series catalog to download";
+                icon = "jellyseerr.webp";
+                siteMonitor = "https://${nixarr.jellyseerr.url}";
+
+              };
+            }
+          ];
+        }
+        {
+          Downloads = [
             {
               Calendar = [
                 {
@@ -168,49 +246,46 @@ in
               ];
             }
             {
-              Services = [
+              Arrs = [
                 {
-                  Microbin = {
-                    href = "https://mc.${homelab.baseDomain}";
-                    description = "Minimalist copy/paste service";
-                    icon = "microbin.webp";
-                    siteMonitor = "https://mc.${homelab.baseDomain}";
+                  Radarr = {
+                    href = "https://${nixarr.radarr.url}";
+                    description = "Download our movies";
+                    icon = "radarr.webp";
+                    siteMonitor = "https://${nixarr.radarr.url}";
 
                   };
                 }
                 {
-                  "Stirling-pdf" = {
-                    href = "https://spdf.${homelab.baseDomain}";
-                    description = "PDF operations service";
-                    icon = "stirling-pdf.svg";
-                    siteMonitor = "https://spdf.${homelab.baseDomain}";
+                  Sonarr = {
+                    href = "https://${nixarr.sonarr.url}";
+                    description = "Download our series";
+                    icon = "sonarr.webp";
+                    siteMonitor = "https://${nixarr.sonarr.url}";
 
                   };
                 }
                 {
-                  Miniflux = {
-                    href = "https://news.${homelab.baseDomain}";
-                    description = "Personnal RSS feed";
-                    icon = "miniflux-light.svg";
-                    siteMonitor = "https://news.${homelab.baseDomain}";
+                  Bazarr = {
+                    href = "https://${nixarr.bazarr.url}";
+                    description = "Download our subtitles";
+                    icon = "bazarr.webp";
+                    siteMonitor = "https://${nixarr.bazarr.url}";
 
                   };
                 }
                 {
-                  Authentik = {
-                    href = "https://login.${homelab.baseDomain}";
-                    description = "Authentification and identity management";
-                    icon = "authentik.svg";
-                    siteMonitor = "https://login.${homelab.baseDomain}";
-
+                  Prowlarr = {
+                    href = "https://${nixarr.prowlarr.url}";
+                    icon = "prowlarr.webp";
+                    siteMonitor = "https://${nixarr.prowlarr.url}";
                   };
                 }
                 {
-                  Immich = {
-                    href = "https://photos.${homelab.baseDomain}";
-                    description = "Self hosting alternative to Google Photos";
-                    icon = "immich.svg";
-                    siteMonitor = "https://photos.${homelab.baseDomain}";
+                  Sabnzbd = {
+                    href = "https://${nixarr.sabnzbd.url}";
+                    icon = "sabnzbd.webp";
+                    siteMonitor = "https://${nixarr.sabnzbd.url}";
                   };
                 }
               ];
@@ -227,7 +302,6 @@ in
                   };
                 }
               ];
-
             }
           ];
         }
