@@ -19,8 +19,33 @@ in
 
     domain = mkOption {
       type = lib.types.str;
-      default = "";
+      default = "photos";
       description = "The domain for ${service}";
+    };
+
+    url = mkOption {
+      type = lib.types.str;
+      description = "URL of Immich";
+      default = "${cfg.domain}.${homelab.baseDomain}";
+    };
+
+    homepage = {
+      name = mkOption {
+        type = lib.types.str;
+        default = "Immich";
+      };
+      description = mkOption {
+        type = lib.types.str;
+        default = "Self hosting alternative to Google Photos";
+      };
+      icon = mkOption {
+        type = lib.types.str;
+        default = "immich.svg";
+      };
+      category = mkOption {
+        type = lib.types.str;
+        default = "Media";
+      };
     };
   };
 
@@ -37,12 +62,11 @@ in
     services.immich = {
       enable = cfg.enable;
       port = 2283;
-      #   mediaLocation = "/home/guillaume/Services/Immich";
       machine-learning.enable = false;
       openFirewall = true;
     };
 
-    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.url}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''

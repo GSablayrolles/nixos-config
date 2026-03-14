@@ -7,6 +7,8 @@
     services = {
       homepage.enable = true;
 
+      authentik.enable = true;
+
       microbin = {
         enable = true;
         domain = "mc";

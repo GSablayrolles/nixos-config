@@ -3,6 +3,7 @@
 }:
 {
   imports = [
-    ./jellys.nix
+    ./jellyfin.nix
+    ./jellyseerr.nix
   ];
 }

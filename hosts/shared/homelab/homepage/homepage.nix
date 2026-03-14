@@ -16,6 +16,7 @@ in
 
   config = mkIf homepage.enable {
     services.glances.enable = true;
+
     services.homepage-dashboard = {
       enable = true;
       environmentFiles = [
@@ -33,13 +34,26 @@ in
           }
           {
             Services = {
-              header = true;
+              header = false;
               style = "row";
-              columns = 4;
+              columns = 3;
+
+              Media = {
+                header = false;
+              };
+
+              Auth = {
+                header = false;
+              };
+
+              Apps = {
+                header = false;
+              };
             };
           }
           {
             Downloads = {
+              header = false;
               style = "row";
               columns = 2;
 
@@ -155,7 +169,7 @@ in
                   widget = {
                     type = "glances";
                     url = "http://localhost:${port}";
-                    metric = "network:wlp2s0";
+                    metric = "network:enp3s0f1";
                     chart = true;
                     version = 4;
                   };
@@ -164,70 +178,37 @@ in
             ];
         }
         {
-          Services = [
-            {
-              Microbin = {
-                href = "https://mc.${homelab.baseDomain}";
-                description = "Minimalist copy/paste service";
-                icon = "microbin.webp";
-                siteMonitor = "https://mc.${homelab.baseDomain}";
+          Services =
+            let
+              homepageCategories = [
+                "Media"
+                "Auth"
+                "Apps"
+              ];
+              hl = config.homelab.services;
+              servicesByCategory =
+                cat: servicesRoot:
+                (lib.attrsets.filterAttrs (
+                  _name: value: value ? homepage && value.homepage.category == cat
+                ) servicesRoot);
+              displayService = servicesRoot: service: {
+                "${servicesRoot.${service}.homepage.name}" = {
+                  icon = servicesRoot.${service}.homepage.icon;
+                  description = servicesRoot.${service}.homepage.description;
+                  href = "https://${servicesRoot.${service}.url}";
+                  siteMonitor = "https://${servicesRoot.${service}.url}";
+                };
+              };
+              applyCategoryDisplayService =
+                cat: servicesRoot:
+                lib.lists.forEach (lib.attrsets.mapAttrsToList (name: _value: name) (
+                  servicesByCategory "${cat}" servicesRoot
+                )) (service: displayService servicesRoot service);
 
-              };
-            }
-            {
-              "Stirling-pdf" = {
-                href = "https://spdf.${homelab.baseDomain}";
-                description = "PDF operations service";
-                icon = "stirling-pdf.svg";
-                siteMonitor = "https://spdf.${homelab.baseDomain}";
-
-              };
-            }
-            {
-              Miniflux = {
-                href = "https://news.${homelab.baseDomain}";
-                description = "Personnal RSS feed";
-                icon = "miniflux-light.svg";
-                siteMonitor = "https://news.${homelab.baseDomain}";
-
-              };
-            }
-            {
-              Authentik = {
-                href = "https://login.${homelab.baseDomain}";
-                description = "Authentification and identity management";
-                icon = "authentik.svg";
-                siteMonitor = "https://login.${homelab.baseDomain}";
-
-              };
-            }
-            {
-              Immich = {
-                href = "https://photos.${homelab.baseDomain}";
-                description = "Self hosting alternative to Google Photos";
-                icon = "immich.svg";
-                siteMonitor = "https://photos.${homelab.baseDomain}";
-              };
-            }
-            {
-              Jellyfin = {
-                href = "https://${nixarr.jellyfin.url}";
-                description = "Our media library";
-                icon = "jellyfin.webp";
-                siteMonitor = "https://${nixarr.jellyfin.url}";
-
-              };
-            }
-            {
-              Jellyseerr = {
-                href = "https://${nixarr.jellyseerr.url}";
-                description = "Movies/Series catalog to download";
-                icon = "jellyseerr.webp";
-                siteMonitor = "https://${nixarr.jellyseerr.url}";
-
-              };
-            }
-          ];
+            in
+            lib.lists.forEach homepageCategories (cat: {
+              "${cat}" = applyCategoryDisplayService cat hl ++ applyCategoryDisplayService cat nixarr;
+            });
         }
         {
           Downloads = [

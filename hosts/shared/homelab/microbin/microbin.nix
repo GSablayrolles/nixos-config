@@ -18,8 +18,33 @@ in
 
     domain = mkOption {
       type = lib.types.str;
-      default = "";
+      default = "mc";
       description = "The domain for ${service}";
+    };
+
+    url = mkOption {
+      type = lib.types.str;
+      description = "URL of Microbin";
+      default = "${cfg.domain}.${homelab.baseDomain}";
+    };
+
+    homepage = {
+      name = mkOption {
+        type = lib.types.str;
+        default = "Microbin";
+      };
+      description = mkOption {
+        type = lib.types.str;
+        default = "Minimalist copy/paste service";
+      };
+      icon = mkOption {
+        type = lib.types.str;
+        default = "microbin.webp";
+      };
+      category = mkOption {
+        type = lib.types.str;
+        default = "Apps";
+      };
     };
   };
 
@@ -39,7 +64,7 @@ in
       };
     };
 
-    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.url}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''

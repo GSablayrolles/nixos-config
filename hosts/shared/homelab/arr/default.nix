@@ -20,7 +20,6 @@ in
   config = mkIf cfg.enable {
     nixarr = {
       enable = cfg.enable;
-
     };
   };
 

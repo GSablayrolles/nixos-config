@@ -19,8 +19,33 @@ in
 
     domain = mkOption {
       type = lib.types.str;
-      default = "";
+      default = "spdf";
       description = "The domain for ${service}";
+    };
+
+    url = mkOption {
+      type = lib.types.str;
+      description = "URL of Stirling Pdf";
+      default = "${cfg.domain}.${homelab.baseDomain}";
+    };
+
+    homepage = {
+      name = mkOption {
+        type = lib.types.str;
+        default = "Stirling-Pdf";
+      };
+      description = mkOption {
+        type = lib.types.str;
+        default = "PDF operations service";
+      };
+      icon = mkOption {
+        type = lib.types.str;
+        default = "stirling-pdf.svg";
+      };
+      category = mkOption {
+        type = lib.types.str;
+        default = "Apps";
+      };
     };
   };
 
@@ -33,7 +58,7 @@ in
       };
     };
 
-    services.caddy.virtualHosts."${cfg.domain}.${homelab.baseDomain}" = {
+    services.caddy.virtualHosts."${cfg.url}" = {
       useACMEHost = homelab.baseDomain;
 
       extraConfig = ''
