@@ -30,6 +30,7 @@ in
     ./minecraft
     ./miniflux
     ./stirling-pdf
+    ./tailscale
   ];
 
 }

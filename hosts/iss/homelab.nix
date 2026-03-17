@@ -9,6 +9,8 @@
 
       authentik.enable = true;
 
+      tailscale.enable = true;
+
       microbin = {
         enable = true;
         domain = "mc";

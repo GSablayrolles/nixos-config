@@ -64,6 +64,7 @@ in
       port = 2283;
       machine-learning.enable = false;
       openFirewall = true;
+      host = "0.0.0.0";
     };
 
     services.caddy.virtualHosts."${cfg.url}" = {
