@@ -24,6 +24,13 @@
         type = "ed25519";
       }
     ];
+
+    extraConfig = ''
+      AllowTcpForwarding yes
+      AllowAgentForwarding yes
+      AllowStreamLocalForwarding no
+      AuthenticationMethods publickey
+    '';
   };
 
   services.fail2ban = {
