@@ -27,6 +27,10 @@
       enable = true;
       xkb.layout = "fr";
     };
+    logind = {
+      lidSwitch = "ignore";
+      settings.Login.HandlePowerKey = "ignore";
+    };
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
