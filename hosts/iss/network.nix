@@ -6,10 +6,6 @@
     domain = "ferrets-home.party";
     search = [ "ferrets-home.party" ];
 
-    extraHosts = ''
-      192.168.1.134 atlantis
-    '';
-
     networkmanager = {
       unmanaged = [ "wlp2s0" ];
       wifi.powersave = false;

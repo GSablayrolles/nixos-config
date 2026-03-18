@@ -67,8 +67,6 @@ in
     networking.firewall = {
       enable = true;
       trustedInterfaces = [ "tailscale0" ];
-      #   allowedUDPPorts = [ config.services.tailscale.port ];
-      #   allowedTCPPorts = [ config.services.tailscale.port ];
     };
 
     services = {
@@ -76,28 +74,7 @@ in
         enable = true;
         port = cfg.port;
         authKeyFile = config.sops.secrets.tailscale-key.path;
-      };
-
-      caddy.virtualHosts = {
-        "${cfg.url}" = mkIf cfg.enable {
-          useACMEHost = homelab.baseDomain;
-
-          extraConfig = ''
-            route {
-                reverse_proxy /outpost.goauthentik.io/* http://outpost.${homelab.baseDomain}:9000
-
-                forward_auth http://outpost.${homelab.baseDomain}:9000 {
-                    uri /outpost.goauthentik.io/auth/caddy
-
-                    copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
-
-                    trusted_proxies private_ranges
-                }
-
-                reverse_proxy http://127.0.0.1:${toString cfg.port}
-            }
-          '';
-        };
+        extraSetFlags = [ "--netfilter-mode=nodivert" ];
       };
     };
   };

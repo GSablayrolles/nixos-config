@@ -7,12 +7,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./sops.nix
-    ../shared/users/guillaume
-    ../shared/global
+    ./network.nix
     ../shared/content/stylix.nix
+    ../shared/global
+    ../shared/users/guillaume
+    ./sops.nix
   ];
-  networking.hostName = "curiosity";
+
   services = {
     displayManager.sddm = {
       enable = true;
