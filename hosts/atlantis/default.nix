@@ -21,7 +21,7 @@
     search = [ "ferret.party" ];
 
     extraHosts = ''
-      192.168.1.154 iss
+      192.168.1.46 iss
     '';
 
     firewall = {
