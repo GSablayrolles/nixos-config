@@ -17,16 +17,19 @@
   networking = {
     hostName = "atlantis";
 
-    domain = "ferret.party";
-    search = [ "ferret.party" ];
+    domain = "ferrets-home.party";
+    search = [ "ferrets-home.party" ];
 
     extraHosts = ''
       192.168.1.46 iss
     '';
 
+    nameservers = [
+      "192.168.1.46"
+    ];
+
     firewall = {
       enable = true;
-
     };
   };
 
