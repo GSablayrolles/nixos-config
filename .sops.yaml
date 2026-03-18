@@ -1,9 +1,11 @@
 keys:
     - &iss age1se943httw3wx8hhlh7sav9cap9hzyq9jh3hz9dnnwvpqn24dhy8sjhrfyv
     - &atlantis age1f09qddmwcezqv20yn4gvgv8tme668g6rmdr4kdn5rt70yj0vz54sccj88q
+    - &curiosity age1kna6pqau8fj33ex3jh5l7vhkegtnzdy2la82qzdm45l3lnk803rq09z09l
 creation_rules:
     - path_regex: hosts/shared/secrets.yaml$
       key_groups:
           - age:
                 - *iss
                 - *atlantis
+                - *curiosity
