@@ -10,6 +10,10 @@ let
 in
 {
 
+  imports = [
+    ./fastfetch
+  ];
+
   home.packages = mkIf cfg.tools.enable (
     with pkgs;
     [
