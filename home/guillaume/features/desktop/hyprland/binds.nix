@@ -62,9 +62,8 @@ in
       ++
         # Screen lock
         [
-          ",XF86Launch5,exec,${hyprlock}"
-          ",XF86Launch4,exec,${hyprlock}"
-          "SUPER,backspace,exec,${hyprlock}"
+          "SUPER,Escape,exec,${hyprlock}"
+          "SUPER,l,exec,${hyprlock}"
         ]
       ++
         # Notification manager

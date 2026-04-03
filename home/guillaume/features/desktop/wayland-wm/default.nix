@@ -14,8 +14,6 @@ in
     ./waybars
     ./rofi
     ./cliphist.nix
-    #./hyprlock.nix
-    #./hypridle.nix
   ];
   home.packages = mkIf cfg.wayland.enable (
     with pkgs;
