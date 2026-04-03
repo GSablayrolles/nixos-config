@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -18,9 +17,8 @@
     nameservers = [
       "192.168.1.46"
       "192.168.1.254"
+      "1.1.1.1"
     ];
-
-    networkmanager.dns = lib.mkForce "none";
 
     firewall = {
       enable = true;
@@ -41,7 +39,7 @@
 
   services = {
     tailscale = {
-      enable = true;
+      enable = false;
       port = 41641;
       authKeyFile = config.sops.secrets.tailscale-key.path;
       extraSetFlags = [ "--netfilter-mode=nodivert" ];
