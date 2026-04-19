@@ -59,6 +59,10 @@ in
       ++ [
         "SUPERSHIFT,w,exec,${killall} -SIGUSR1 .waybar-wrapped"
       ]
+      # Wlogout
+      ++ [
+        "SUPERSHIFT,a,exec, pkill -x wlogout || wlogout -b 4"
+      ]
       ++
         # Screen lock
         [

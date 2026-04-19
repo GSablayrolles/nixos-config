@@ -14,6 +14,7 @@ in
     ./window-bind.nix
     ./decoration.nix
     ./hyprlock.nix
+    ./wlogout
   ];
 
   wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
