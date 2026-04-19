@@ -10,10 +10,9 @@ let
 in
 {
   imports = [
-    ./swaync.nix
+    ./swaync
     ./waybars
     ./rofi
-    ./cliphist.nix
   ];
   home.packages = mkIf cfg.wayland.enable (
     with pkgs;
@@ -29,4 +28,6 @@ in
   );
 
   services.playerctld.enable = cfg.wayland.enable;
+  services.cliphist.enable = cfg.wayland.enable;
+
 }

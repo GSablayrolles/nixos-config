@@ -13,7 +13,7 @@ in
     ./binds.nix
     ./window-bind.nix
     ./decoration.nix
-    ./hyprlock.nix
+    ./hyprlock
     ./wlogout
   ];
 

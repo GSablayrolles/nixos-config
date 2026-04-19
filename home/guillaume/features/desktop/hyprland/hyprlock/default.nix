@@ -20,7 +20,7 @@ in
 
       background = [
         {
-          path = "${./wallpapers/bush.jpg}";
+          path = "${../wallpapers/bush.jpg}";
 
           color = "rgba(29, 32, 33, 255)";
           blur_passes = 2;

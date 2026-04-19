@@ -1,5 +1,4 @@
 {
-  outputs,
   config,
   lib,
   pkgs,
@@ -9,13 +8,8 @@ let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
   # Dependencies
-  cut = "${pkgs.coreutils}/bin/cut";
-  wc = "${pkgs.coreutils}/bin/wc";
   jq = "${pkgs.jq}/bin/jq";
-  playerctl = "${pkgs.playerctl}/bin/playerctl";
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-  playerctld = "${pkgs.playerctl}/bin/playerctld";
-  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
   nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
