@@ -22,7 +22,7 @@ in
       wayland-protocols
       wayland-utils
       wlroots
-      swww
+      awww
       wl-clipboard
       swaynotificationcenter
     ]
