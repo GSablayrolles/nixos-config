@@ -47,16 +47,9 @@ in
       "SUPERSHIFT,q,killactive"
       "SUPERSHIFT,e,exit"
 
-      "SUPER,s,togglesplit"
       "SUPER,f,fullscreen,1"
       "SUPERSHIFT,f,fullscreen,0"
       "SUPERSHIFT,space,togglefloating"
-
-      "SUPER,KP_Subtract,splitratio,-0.25"
-      "SUPERSHIFT,KP_Subtract,splitratio,-0.3333333"
-
-      "SUPER,KP_Add,splitratio,0.25"
-      "SUPERSHIFT,KP_Add,splitratio,0.3333333"
 
       "SUPER,g,togglegroup"
       "SUPER,b,changegroupactive,f"
