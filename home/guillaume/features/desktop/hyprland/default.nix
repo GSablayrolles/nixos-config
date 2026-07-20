@@ -19,6 +19,7 @@ in
 
   wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
     enable = true;
+    systemd.enable = false;
 
     configType = "hyprlang";
     xwayland.enable = true;

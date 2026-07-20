@@ -15,9 +15,12 @@
   ];
 
   services = {
-    displayManager.gdm = {
+    displayManager.sddm = {
       enable = true;
-      wayland = true;
+      wayland.enable = true;
+
+      theme = "sddm-astronaut-theme";
+      extraPackages = [ pkgs.sddm-astronaut ];
     };
     xserver = {
       enable = true;
@@ -66,7 +69,8 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.xdg-utils # xdg-open
+  environment.systemPackages = with pkgs; [
+    xdg-utils # xdg-open
+    sddm-astronaut
   ];
 }
