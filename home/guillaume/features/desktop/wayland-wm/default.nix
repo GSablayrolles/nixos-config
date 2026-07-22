@@ -27,6 +27,8 @@ in
     ]
   );
 
+  home.pointerCursor.enable = true;
+
   services.playerctld.enable = cfg.wayland.enable;
   services.cliphist.enable = cfg.wayland.enable;
 

@@ -28,7 +28,7 @@
       xkb.layout = "fr";
     };
     logind = {
-      lidSwitch = "ignore";
+      settings.Login.HandleLidSwitch = "ignore";
       settings.Login.HandlePowerKey = "ignore";
     };
   };

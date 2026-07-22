@@ -59,7 +59,7 @@ in
   config = mkIf cfg.enable {
     nixarr = {
 
-      jellyseerr = {
+      seerr = {
         enable = cfg.jellyseerr.enable;
         port = cfg.jellyseerr.port;
       };
