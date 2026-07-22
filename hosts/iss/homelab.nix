@@ -41,6 +41,8 @@
 
         sabnzbd.enable = true;
 
+        shelfmark.enable = true;
+
         jellyfin.enable = true;
         jellyseerr.enable = true;
 

@@ -27,5 +27,6 @@ in
     ./arrs
     ./jellys
     ./sabnzbd
+    ./shelfmark
   ];
 }
