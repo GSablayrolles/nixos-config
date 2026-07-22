@@ -69,35 +69,49 @@ in
         }
       ];
 
-      userSettings.editor.formatOnSave = true;
+      userSettings = {
+        update.showReleaseNotes = false;
 
-      # Theme and iconTheme
-      userSettings.workbench.iconTheme = "material-icon-theme";
+        # AI remove
+        titleBar.openInAgentsWindow.enabled = false;
+        chat.titleBar = {
+          signIn.enabled = false;
+          openInAgentsWindow.enabled = false;
+        };
 
-      # Indent
-      userSettings.editor.detectIndentation = false;
-      userSettings.editor.indent_style = "space";
-      userSettings.editor.indentSize = 4;
-      userSettings.editor.insertSpaces = true;
-      userSettings.editor.tabSize = 2;
+        # Theme and iconTheme
+        workbench.iconTheme = "material-icon-theme";
 
-      #Everforest
-      #userSettings.everforest.darkWorkbench = "high-contrast";
+        editor = {
+          formatOnSave = true;
 
-      # Font
-      userSettings.editor.fontLigatures = true;
-      userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
+          # Indent
+          detectIndentation = false;
+          indent_style = "space";
+          indentSize = 4;
+          insertSpaces = true;
+          tabSize = 2;
 
-      # Git
-      userSettings.git.autofetch = true;
-      userSettings.git.confirmSync = false;
+          # Font
+          fontLigatures = true;
+          fontFamily = config.fontProfiles.monospace.family;
+        };
 
-      # Nix IDE
-      userSettings.nix-ide.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
-      userSettings.nix.enableLanguageServer = true;
-      userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-      userSettings.nix.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
-      userSettings.nix.serverSettings.nil.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
+        # Git
+        git = {
+          autofetch = true;
+          confirmSync = false;
+        };
+
+        # Nix IDE
+        nix-ide.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
+        nix = {
+          enableLanguageServer = true;
+          serverPath = "${pkgs.nil}/bin/nil";
+          formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
+          serverSettings.nil.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
+        };
+      };
     };
   };
 
