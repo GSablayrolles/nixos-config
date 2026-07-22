@@ -36,6 +36,7 @@ in
       shelfmark = {
         enable = cfg.shelfmark.enable;
         port = cfg.shelfmark.port;
+	host = "0.0.0.0";
       };
     };
 
