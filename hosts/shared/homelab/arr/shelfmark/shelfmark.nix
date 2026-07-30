@@ -26,7 +26,7 @@ in
         type = lib.types.str;
         description = "URL of Shelfmark";
         default = "books.${homelab.baseDomain}";
-
+       };
         homepage = {
           name = mkOption {
             type = lib.types.str;
@@ -43,7 +43,6 @@ in
           category = mkOption {
             type = lib.types.str;
             default = "Media";
-          };
         };
       };
     };
