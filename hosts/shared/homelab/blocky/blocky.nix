@@ -22,7 +22,7 @@ in
         customTTL = "1h";
         filterUnmappedTypes = true;
         mapping = {
-          "${baseDomain}" = "192.168.1.46";
+          "${baseDomain}" = "192.168.1.46,100.83.19.100";
         };
       };
       blocking = {
