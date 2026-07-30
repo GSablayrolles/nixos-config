@@ -38,7 +38,7 @@ in
         };
         icon = mkOption {
           type = lib.types.str;
-          default = "shelfmark-dark.svg";
+          default = "shelfmark.webp";
         };
         category = mkOption {
           type = lib.types.str;
