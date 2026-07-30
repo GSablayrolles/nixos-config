@@ -26,23 +26,23 @@ in
         type = lib.types.str;
         description = "URL of Shelfmark";
         default = "books.${homelab.baseDomain}";
-       };
-        homepage = {
-          name = mkOption {
-            type = lib.types.str;
-            default = "Shelfmark";
-          };
-          description = mkOption {
-            type = lib.types.str;
-            default = "Books finder";
-          };
-          icon = mkOption {
-            type = lib.types.str;
-            default = "shelfmark-dark.svg";
-          };
-          category = mkOption {
-            type = lib.types.str;
-            default = "Media";
+      };
+      homepage = {
+        name = mkOption {
+          type = lib.types.str;
+          default = "Shelfmark";
+        };
+        description = mkOption {
+          type = lib.types.str;
+          default = "Books finder";
+        };
+        icon = mkOption {
+          type = lib.types.str;
+          default = "shelfmark-dark.svg";
+        };
+        category = mkOption {
+          type = lib.types.str;
+          default = "Media";
         };
       };
     };

@@ -36,6 +36,9 @@ in
     };
   };
 
-  networking.nameservers = [ "192.168.1.46" "100.83.19.100"];
+  networking.nameservers = [
+    "192.168.1.46"
+    "100.83.19.100"
+  ];
   networking.networkmanager.dns = lib.mkForce "none";
 }
