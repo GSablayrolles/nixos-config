@@ -17,7 +17,6 @@
     nameservers = [
       "192.168.1.46"
       "192.168.1.254"
-      "100.83.19.100"
       "1.1.1.1"
     ];
 
@@ -40,7 +39,7 @@
 
   services = {
     tailscale = {
-      enable = false;
+      enable = true;
       port = 41641;
       authKeyFile = config.sops.secrets.tailscale-key.path;
       extraSetFlags = [ "--netfilter-mode=nodivert" ];
