@@ -33,6 +33,10 @@
 
     nixarr.url = "github:rasmus-kirk/nixarr";
 
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +48,7 @@
       sops-nix,
       authentik-nix,
       nixarr,
+      nvf,
       ...
     }:
     let
@@ -69,6 +74,7 @@
             sops-nix.nixosModules.sops
             authentik-nix.nixosModules.default
             nixarr.nixosModules.default
+            nvf.nixosModules.default
           ];
         };
     in

@@ -16,7 +16,7 @@ in
     desktop = {
       wayland = {
 
-        enable = mkEnableOption ''Enable Wayland Window Manager'';
+        enable = mkEnableOption "Enable Wayland Window Manager";
 
         hyprland = {
           enable = mkEnableOption ''
