@@ -37,6 +37,11 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    portfolio = {
+      url = "github:GSablayrolles/Portfolio";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

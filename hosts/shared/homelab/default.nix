@@ -29,6 +29,7 @@ in
     ./microbin
     ./minecraft
     ./miniflux
+    ./portfolio
     ./stirling-pdf
     ./tailscale
   ];

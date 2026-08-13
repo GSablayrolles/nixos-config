@@ -11,6 +11,8 @@
 
       tailscale.enable = true;
 
+      portfolio.enable = true;
+
       microbin = {
         enable = true;
         domain = "mc";
