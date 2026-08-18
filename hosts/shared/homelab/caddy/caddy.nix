@@ -10,10 +10,18 @@ in
     443
   ];
 
-  sops.secrets.cloudflare-token = {
-    sopsFile = ../../secrets.yaml;
-    owner = config.services.caddy.user;
-    group = config.services.caddy.group;
+  sops = {
+    secrets.cloudflare-token = {
+      sopsFile = ../../secrets.yaml;
+      owner = config.services.caddy.user;
+      group = config.services.caddy.group;
+    };
+
+    secrets.cloudflared-cert = {
+      sopsFile = ../../secrets.yaml;
+      owner = "guillaume";
+      group = "users";
+    };
   };
 
   services.caddy = {
@@ -57,4 +65,7 @@ in
     };
   };
 
+  services.cloudflared = {
+    enable = true;
+  };
 }
