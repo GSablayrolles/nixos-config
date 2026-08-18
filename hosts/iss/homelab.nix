@@ -13,6 +13,8 @@
 
       portfolio.enable = true;
 
+      actual.enable = true;
+
       microbin = {
         enable = true;
         domain = "mc";
