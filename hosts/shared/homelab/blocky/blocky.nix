@@ -32,6 +32,10 @@ in
           #Another filter for blocking adult sites
           adult = [ "https://blocklistproject.github.io/Lists/porn.txt" ];
         };
+        #Configure what block categories are used
+        clientGroupsBlock = {
+          default = [ "ads" ];
+        };
       };
     };
   };
