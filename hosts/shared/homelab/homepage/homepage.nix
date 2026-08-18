@@ -311,6 +311,16 @@ in
                 }
               ];
             }
+            {
+              Portfolio = [
+                {
+                  abbr = "PO";
+                  icon = "astro.svg";
+                  href = "https://guillaume-int.ferrets-home.party";
+                  description = "My portfolio";
+                }
+              ];
+            }
           ];
         }
         {
