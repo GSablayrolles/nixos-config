@@ -36,6 +36,13 @@
     };
   };
 
+  virtualisation = {
+    docker.enable = true;
+    podman.enable = true;
+  };
+
+  users.users.guillaume.extraGroups = [ "docker" ];
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
