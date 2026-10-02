@@ -44,7 +44,6 @@
         "copyfile"
         "copypath"
       ];
-      theme = "candy";
     };
   };
 }

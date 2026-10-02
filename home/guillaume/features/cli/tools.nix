@@ -17,8 +17,6 @@ in
   home.packages = mkIf cfg.tools.enable (
     with pkgs;
     [
-      pfetch
-      fastfetch
       pipes
       obsidian
       bat

@@ -5,5 +5,6 @@
     ./oh-my-zsh.nix
     ./git.nix
     ./direnv.nix
+    ./starship.nix
   ];
 }
