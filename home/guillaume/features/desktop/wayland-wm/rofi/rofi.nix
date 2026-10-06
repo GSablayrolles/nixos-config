@@ -37,22 +37,23 @@ in
     '';
     executable = true;
   };
+
   programs.rofi = mkIf cfg.wayland.enable {
     enable = true;
     package = pkgs.rofi;
 
+    extraConfig = {
+      modi = "drun,filebrowser,clipboard:${cliphist-rofi-img}";
+      show-icons = true;
+      display-drun = "🔍 Apps";
+      display-run = "🔧 Run";
+      display-filebrowser = "📂 Files";
+      display-clipboard = "Clipboard";
+      dpi = 1;
+    };
+
     settings = {
       terminal = config.home.sessionVariables.TERMINAL;
-
-      extraConfig = {
-        modi = "drun,filebrowser,clipboard:${cliphist-rofi-img}";
-        show-icons = true;
-        display-drun = "🔍 Apps";
-        display-run = "🔧 Run";
-        display-filebrowser = "📂 Files";
-        display-clipboard = "Clipboard";
-        dpi = 1;
-      };
     };
 
     theme =
