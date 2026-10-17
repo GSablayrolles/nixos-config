@@ -19,7 +19,6 @@
 
       yarr = {
         enable = true;
-        domain = "news";
       };
 
       miniflux = {

@@ -9,7 +9,6 @@ let
 
   service = "tailscale";
   cfg = config.homelab.services.tailscale;
-  homelab = config.homelab;
 
 in
 {

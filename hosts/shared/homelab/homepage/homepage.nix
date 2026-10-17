@@ -324,13 +324,21 @@ in
           ];
         }
         {
-          Entertainment = [
+          Resources = [
             {
               YouTube = [
                 {
                   abbr = "YT";
                   icon = "youtube.svg";
                   href = "https://youtube.com/";
+                }
+              ];
+              NixOS = [
+                {
+                  abbr = "Nix";
+                  icon = "nixos.svg";
+                  href = "https://search.nixos.org/packages?channel=unstable";
+                  description = "NixOS options";
                 }
               ];
             }
