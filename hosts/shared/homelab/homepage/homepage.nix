@@ -15,12 +15,32 @@ in
   };
 
   config = mkIf homepage.enable {
+
+    sops.secrets = {
+      sabnzbd-key = {
+        sopsFile = ../../secrets.yaml;
+      };
+      sonarr-key = {
+        sopsFile = ../../secrets.yaml;
+      };
+      radarr-key = {
+        sopsFile = ../../secrets.yaml;
+      };
+    };
+
+    sops.templates."homepage.env".content = ''
+      HOMEPAGE_ALLOWED_HOSTS=${homelab.baseDomain}
+      HOMEPAGE_VAR_SABNZBD_API_KEY=${config.sops.placeholder.sabnzbd-key}
+      HOMEPAGE_VAR_SONARR_API_KEY=${config.sops.placeholder.sonarr-key}
+      HOMEPAGE_VAR_RADARR_API_KEY=${config.sops.placeholder.radarr-key}
+    '';
+
     services.glances.enable = true;
 
     services.homepage-dashboard = {
       enable = true;
       environmentFiles = [
-        (builtins.toFile "homepage.env" "HOMEPAGE_ALLOWED_HOSTS=${homelab.baseDomain}")
+        config.sops.templates."homepage.env".path
       ];
 
       settings = {
@@ -58,12 +78,21 @@ in
               columns = 2;
 
               Calendar = {
+                style = "column";
                 header = false;
               };
 
               Arrs = {
+                style = "column";
                 header = false;
               };
+            };
+          }
+          {
+            Monitor = {
+              header = false;
+              style = "row";
+              columns = 3;
             };
           }
         ];
@@ -215,12 +244,28 @@ in
             {
               Calendar = [
                 {
-                  "Our Calendar" = {
+                  "Upcoming" = {
                     widget = {
                       type = "calendar";
                       view = "monthly"; # optional - possible values monthly, agenda
                       maxEvents = 10; # optional - defaults to 10
                       showTime = true; # optional - show time for event happening today - defaults to false
+                      integrations = [
+                        {
+                          type = "sonarr";
+                          service_group = "Monitor";
+                          service_name = "Sonarr";
+                          color = "teal";
+                          baseUrl = "https://${nixarr.sonarr.url}";
+                        }
+                        {
+                          type = "radarr";
+                          service_group = "Monitor";
+                          service_name = "Radarr";
+                          color = "amber";
+                          baseUrl = "https://${nixarr.radarr.url}";
+                        }
+                      ];
                     };
                   };
                 }
@@ -243,7 +288,6 @@ in
                     description = "Download our series";
                     icon = "sonarr.webp";
                     siteMonitor = "https://${nixarr.sonarr.url}";
-
                   };
                 }
                 {
@@ -271,18 +315,48 @@ in
                 }
               ];
             }
+          ];
+        }
+        {
+          Monitor = [
             {
-              Monitor = [
-
-                {
-                  Minecraft = {
-                    widget = {
-                      type = "minecraft";
-                      url = "udp://127.0.0.1:25565";
-                    };
-                  };
-                }
-              ];
+              Sonarr = {
+                icon = "sonarr.webp";
+                widget = {
+                  type = "sonarr";
+                  url = "http://127.0.0.1:${toString nixarr.sonarr.port}";
+                  key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
+                };
+              };
+            }
+            {
+              Radarr = {
+                icon = "radarr.webp";
+                widget = {
+                  type = "radarr";
+                  url = "http://127.0.0.1:${toString nixarr.radarr.port}";
+                  key = "{{HOMEPAGE_VAR_RADARR_API_KEY}}";
+                };
+              };
+            }
+            {
+              Sabnzbd = {
+                icon = "sabnzbd.webp";
+                widget = {
+                  type = "sabnzbd";
+                  url = "http://127.0.0.1:${toString nixarr.sabnzbd.port}";
+                  key = "{{HOMEPAGE_VAR_SABNZBD_API_KEY}}";
+                };
+              };
+            }
+            {
+              Minecraft = {
+                icon = "sh-minecraft-creeper.webp";
+                widget = {
+                  type = "minecraft";
+                  url = "udp://127.0.0.1:25565";
+                };
+              };
             }
           ];
         }

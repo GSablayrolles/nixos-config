@@ -41,7 +41,7 @@ in
 
       url = mkOption {
         type = lib.types.str;
-        description = "URL of Jellyfin";
+        description = "URL of Prowlarr";
         default = "prowlarr.${homelab.baseDomain}";
       };
     };
@@ -58,7 +58,7 @@ in
 
       url = mkOption {
         type = lib.types.str;
-        description = "URL of Jellyfin";
+        description = "URL of Radarr";
         default = "radarr.${homelab.baseDomain}";
       };
     };
@@ -75,7 +75,7 @@ in
 
       url = mkOption {
         type = lib.types.str;
-        description = "URL of Jellyfin";
+        description = "URL of Sonarr";
         default = "sonarr.${homelab.baseDomain}";
       };
     };

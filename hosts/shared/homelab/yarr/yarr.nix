@@ -26,7 +26,7 @@ in
 
     port = mkOption {
       description = "Port for Yarr";
-      default = 8989;
+      default = 7070;
     };
 
     homepage = {
