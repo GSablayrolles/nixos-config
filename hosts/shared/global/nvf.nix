@@ -45,7 +45,7 @@
             };
           };
 
-          typescript.enable = false;
+          typescript.enable = true;
           markdown.enable = true;
           rust.enable = true;
         };
