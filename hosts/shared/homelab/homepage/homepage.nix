@@ -189,7 +189,7 @@ in
               servicesByCategory =
                 cat: servicesRoot:
                 (lib.attrsets.filterAttrs (
-                  _name: value: value ? homepage && value.homepage.category == cat
+                  _name: value: value ? homepage && value.enable && value.homepage.category == cat
                 ) servicesRoot);
               displayService = servicesRoot: service: {
                 "${servicesRoot.${service}.homepage.name}" = {

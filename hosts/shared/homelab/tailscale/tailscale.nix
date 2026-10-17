@@ -23,16 +23,10 @@ in
       default = 41641;
     };
 
-    domain = mkOption {
-      type = lib.types.str;
-      default = "vpn";
-      description = "The domain for ${service}";
-    };
-
     url = mkOption {
       type = lib.types.str;
       description = "URL of Tailscale";
-      default = "${cfg.domain}.${homelab.baseDomain}";
+      default = "login.tailscale.com";
     };
 
     homepage = {
