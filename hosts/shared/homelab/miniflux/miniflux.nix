@@ -14,7 +14,7 @@ in
 
     domain = mkOption {
       type = lib.types.str;
-      default = "";
+      default = "miniflux";
       description = "The domain for ${service}";
     };
 

@@ -33,6 +33,7 @@ in
     ./portfolio
     ./stirling-pdf
     ./tailscale
+    ./yarr
   ];
 
 }

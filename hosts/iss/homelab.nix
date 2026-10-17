@@ -11,18 +11,19 @@
 
       tailscale.enable = true;
 
-      portfolio.enable = true;
+      portfolio.enable = false;
 
       actual.enable = true;
 
-      microbin = {
+      microbin.enable = true;
+
+      yarr = {
         enable = true;
-        domain = "mc";
+        domain = "news";
       };
 
       miniflux = {
-        enable = true;
-        domain = "news";
+        enable = false;
       };
 
       stirling-pdf = {
@@ -32,7 +33,7 @@
 
       immich = {
         enable = true;
-        domain = "photos";
+        domain = "immich";
       };
 
       nixarr = {
