@@ -26,6 +26,9 @@ in
       radarr-key = {
         sopsFile = ../../secrets.yaml;
       };
+      jellyfin-homepage-key = {
+        sopsFile = ../../secrets.yaml;
+      };
     };
 
     sops.templates."homepage.env".content = ''
@@ -33,6 +36,7 @@ in
       HOMEPAGE_VAR_SABNZBD_API_KEY=${config.sops.placeholder.sabnzbd-key}
       HOMEPAGE_VAR_SONARR_API_KEY=${config.sops.placeholder.sonarr-key}
       HOMEPAGE_VAR_RADARR_API_KEY=${config.sops.placeholder.radarr-key}
+      HOMEPAGE_VAR_JELLYFIN_API_KEY=${config.sops.placeholder.jellyfin-homepage-key}
     '';
 
     services.glances.enable = true;
@@ -326,6 +330,10 @@ in
                   type = "sonarr";
                   url = "http://127.0.0.1:${toString nixarr.sonarr.port}";
                   key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
+                  fields = [
+                    "wanted"
+                    "queued"
+                  ];
                 };
               };
             }
@@ -336,6 +344,11 @@ in
                   type = "radarr";
                   url = "http://127.0.0.1:${toString nixarr.radarr.port}";
                   key = "{{HOMEPAGE_VAR_RADARR_API_KEY}}";
+                  fields = [
+                    "wanted"
+                    "missing"
+                    "queued"
+                  ];
                 };
               };
             }
@@ -346,6 +359,24 @@ in
                   type = "sabnzbd";
                   url = "http://127.0.0.1:${toString nixarr.sabnzbd.port}";
                   key = "{{HOMEPAGE_VAR_SABNZBD_API_KEY}}";
+                };
+              };
+            }
+            {
+              Jellyfin = {
+                icon = "jellyfin.webp";
+                widget = {
+                  type = "jellyfin";
+                  url = "http://127.0.0.1:8096";
+                  version = 2;
+                  key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
+                  fields = [
+                    "movies"
+                    "series"
+                    "episodes"
+                  ];
+                  enableBlocks = true;
+                  enableNowPlaying = false;
                 };
               };
             }
